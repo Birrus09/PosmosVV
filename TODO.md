@@ -13,12 +13,14 @@ Graphics (💀):
 GUI:
   - basic windows form CS controls for proc. generation parameters
 
+
 Polish:
-    - audio effects for GUI
-    - bug fixes
+  - audio effects for GUI
+  - bug fixes
+
 
 
 
 
 Future additions:
-  -Dynamic audio
+  - Dynamic audio
