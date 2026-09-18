@@ -11,11 +11,11 @@ Graphics (💀):
   - celestial bodies texture procedural generation
 
 GUI:
-  -basic windows form CS controls for proc. generation parameters
+  - basic windows form CS controls for proc. generation parameters
 
 Polish:
-    -audio effects for GUI
-    -bug fixes
+    - audio effects for GUI
+    - bug fixes
 
 
 
