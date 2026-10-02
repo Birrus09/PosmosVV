@@ -98,7 +98,7 @@ class System
                         b.Orbits.Add(o);
                     }
                 }
-                b.magnetic_field = (int)RandomGen.Interval(0.6f, 1.2f, ref seed) * b.size;
+                b.magnetic_field = (int)RandomGen.IntervalF(0.6f, 1.2f, ref seed) * b.size;
                 b.revolution_speed = RandomGen.IntervalF(10.0f, 100.0f, ref seed);
                 b.rotation_speed = RandomGen.IntervalF(0.1f, 1.0f, ref seed);
 
