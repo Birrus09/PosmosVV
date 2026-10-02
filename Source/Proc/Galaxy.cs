@@ -28,6 +28,18 @@ public class Star : Body
     public int out_temp;
     public int radiation;
 
+    public void gen()
+        {
+            id = 0xdeadbeef;
+            coords = new int[2];
+            coords[0] = 0;
+            coords[1] = 0;
+            size = RandomGen.Interval(100, 500, ref seed);
+            temperature = RandomGen.IntervalF(3000.0f, 10000.0f, ref seed);
+            out_temp = (int)temperature / 10;
+            radiation = RandomGen.Interval(100, 10000, ref seed);
+        }
+
 }
 
 
@@ -43,6 +55,9 @@ class System
         {
             sys_id = 0xdeadbeef;
             Primary_bodies = new List<Body>();
+            Star star = new Star();
+            star.gen();
+            Primary_bodies.Add(star);
             for (int i = 0; i < RandomGen.Interval(5, 12, ref seed); i++)
             {
                 Body b = new Body();
