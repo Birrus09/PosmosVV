@@ -6,7 +6,7 @@ namespace PosmosVV
         {
             InitializeComponent();
             PosmosVV.Proc.Galaxy ciao = new Proc.Galaxy();
-            ciao.GenerateGalaxy();
+            ciao.GenerateGalaxy(123);
         }
     }
 }
