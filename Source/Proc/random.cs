@@ -23,4 +23,19 @@ namespace PosmosVV.Proc
             return (RandomNum(ref seed) * 100000f / 100000.0f) * (max - min) + min;
         }
     }
+
+    public static class Utility{
+        public static bool IsPrime(int num){
+            if (num <= 1) return false;
+            if (num == 2) return true;
+            if (num % 2 == 0) return false;
+
+            for (int i = 3; i * i <= Math.Sqrt(num); i += 2)
+            {
+                if (num % i == 0) return false;
+            }
+            return true;
+
+        }
+    }
 }
