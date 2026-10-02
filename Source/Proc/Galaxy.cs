@@ -1,7 +1,6 @@
 namespace PosmosVV.Proc
 {
     using System.Collections.Generic;
-    using PosmosVV.Proc;
 
     public class Body
     {
