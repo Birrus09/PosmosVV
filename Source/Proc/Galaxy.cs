@@ -1,6 +1,6 @@
 namespace PosmosVV.Proc
 {
-    using System.Collections.Generic;
+using System.Collections.Generic;
 using PosmosVV.Proc;
 
 public class Body
@@ -28,7 +28,7 @@ public class Star : Body
     public int out_temp;
     public int radiation;
 
-    public void gen()
+    public void gen(ref int seed)
         {
             id = 0xdeadbeef;
             coords = new int[2];
@@ -56,7 +56,7 @@ class System
             sys_id = 0xdeadbeef;
             Primary_bodies = new List<Body>();
             Star star = new Star();
-            star.gen();
+            star.gen(ref seed);
             Primary_bodies.Add(star);
             for (int i = 0; i < RandomGen.Interval(5, 12, ref seed); i++)
             {
@@ -121,14 +121,6 @@ class Galaxy
             }
 
         }
-
-
     }
-
-
 }
-
-
-
-
 }
