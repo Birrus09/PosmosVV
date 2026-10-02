@@ -121,11 +121,12 @@ class System
 
 class Galaxy
 {
-    public List<System> systems = new List<System>();
+    public List<System> systems;
 
 
     public void GenerateGalaxy(int seed, int size = 1000)
     {
+            systems = new List<System>();
         // scatter spiral without central radius
         int central_radius = size / 10;
         for (int i = 0; i < size; i++)
