@@ -124,7 +124,7 @@ class Galaxy
     public List<System> systems;
 
 
-    public void GenerateGalaxy(int seed, int size = 1000)
+    public void GenerateGalaxy(int seed, int size = 1000, int deviation = 7)
     {
             systems = new List<System>();
         // scatter spiral without central radius
@@ -137,8 +137,8 @@ class Galaxy
                 {
                     System s = new System();
                     s.coordinates = new int[2];
-                    s.coordinates[0] = (int)(i * Math.Cos((double)i/RandomGen.IntervalF(0.9995f, 1.0008f, ref seed)));
-                    s.coordinates[1] = (int)(i * Math.Sin((double)i/RandomGen.IntervalF(0.9995f, 1.0008f, ref seed)));
+                    s.coordinates[0] = (int)(i * Math.Cos((double)i/RandomGen.IntervalF(1.0f - 0.0001f * deviation, 1.0f + 0.0001f * deviation, ref seed)));
+                    s.coordinates[1] = (int)(i * Math.Sin((double)i/RandomGen.IntervalF(1.0f - 0.0001f * deviation, 1.0f + 0.0001f * deviation, ref seed)));
                     systems.Add(s);
                 }
 
