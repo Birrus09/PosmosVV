@@ -34,6 +34,11 @@ class System
     public List<Body> Primary_bodies; //no orbitals, they are inherited;
     public int[2] coordinates;
 
+    public void GenerateSystem()
+        {
+            
+        }
+
 }
 
 
