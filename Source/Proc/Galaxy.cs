@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 namespace PosmosVV.Proc
 {
-using System.Collections.Generic;
-using PosmosVV.Proc;
+
 
 public class Body
 {
@@ -18,14 +18,6 @@ public class Body
 
     public void FindType()
         {
-            if (!type)
-            {
-                type = "default";
-            }
-            else
-            {
-                type = type + "_default";
-            }
 
         }
 
@@ -38,7 +30,7 @@ public class Star : Body
 
     public void gen(ref int seed)
         {
-            id = 0xdeadbeef;
+            id = 1;
             coords = new int[2];
             coords[0] = 0;
             coords[1] = 0;
@@ -61,7 +53,7 @@ class System
 
     public void GenerateSystem(int seed)
         {
-            sys_id = 0xdeadbeef;
+            sys_id = 1;
             Primary_bodies = new List<Body>();
             Star star = new Star();
             star.gen(ref seed);
@@ -78,9 +70,9 @@ class System
                 b.coords = new int[2];
                 b.coords[0] = 0;
                 b.coords[1] = b.distance;
-                b.id = 0xdeadbeef;
+                b.id = 1;
                 b.size = RandomGen.Interval(70, 300, ref seed);
-                if (RandomGen.Chance(0.20, seed))
+                if (RandomGen.Chance(0.20f, ref seed))
                 {
                     b.Orbits = new List<Body>();
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
@@ -97,7 +89,7 @@ class System
                             o.type = "twin planet";
                             b.type = "twin planet";
                         }
-                        else if (0.size > 70)
+                        else if (o.size > 70)
                         {
                             o.type = "orbital";
                         }
@@ -106,7 +98,7 @@ class System
                         b.Orbits.Add(o);
                     }
                 }
-                b.magnetic_field = RandomGen.Interval(0.6, 1.2, ref seed) * b.size;
+                b.magnetic_field = (int)RandomGen.Interval(0.6f, 1.2f, ref seed) * b.size;
                 b.revolution_speed = RandomGen.IntervalF(10.0f, 100.0f, ref seed);
                 b.rotation_speed = RandomGen.IntervalF(0.1f, 1.0f, ref seed);
 
