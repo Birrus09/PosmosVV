@@ -61,7 +61,7 @@ class System
             for (int i = 0; i < RandomGen.Interval(5, 12, ref seed); i++)
             {
                 Body b = new Body();
-                b.distance = (int)randomgen.Intervalf(0.83, 1.24, ref seed) * i * 100; // orbit goes from +distance to -distance
+                b.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * i * 100; // orbit goes from +distance to -distance
                 b.coords = new int[2];
                 b.coords[0] = 0;
                 b.coords[1] = b.distance;
@@ -73,7 +73,7 @@ class System
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
                         Body o = new Body();
-                        o.distance = (int)randomgen.Intervalf(0.83, 1.24, ref seed) * j * 50; 
+                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 50; 
                         o.size = RandomGen.Interval(30, 70, ref seed);
                         o.coords = new int[2];
                         o.coords[0] = 0;
@@ -113,8 +113,8 @@ class Galaxy
                 {
                     System s = new System();
                     s.coordinates = new int[2];
-                    s.coordinates[0] = (int)(i * Math.Cos((double)i/RandomGen.IntervalF(0.98, 1.12, seed)));
-                    s.coordinates[1] = (int)(i * Math.Sin((double)i/RandomGen.IntervalF(0.98, 1.12, seed)));
+                    s.coordinates[0] = (int)(i * Math.Cos((double)i/RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
+                    s.coordinates[1] = (int)(i * Math.Sin((double)i/RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
                 }
 
                 systems.Add(s);
