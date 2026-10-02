@@ -1,36 +1,36 @@
 namespace PosmosVV.Proc
 {
-using System.Collections.Generic;
-using PosmosVV.Proc;
+    using System.Collections.Generic;
+    using PosmosVV.Proc;
 
-public class Body
-{
-    public int id;
-    public int[] coords;
-    public string type;
-    public int size;
-    public float temperature;
-    public int magnetic_field;
-    public float rotation_speed;
-    public float revolution_speed;
-    public List<Body> Orbits;
-    public int distance;
+    public class Body
+    {
+        public int id;
+        public int[] coords;
+        public string type;
+        public int size;
+        public float temperature;
+        public int magnetic_field;
+        public float rotation_speed;
+        public float revolution_speed;
+        public List<Body> Orbits;
+        public int distance;
 
-    public string FindType()
+        public string FindType()
         {
             return type = "planet";
         }
 
-}
+    }
 
-public class Star : Body
-{
-    public int out_temp;
-    public int radiation;
+    public class Star : Body
+    {
+        public int out_temp;
+        public int radiation;
 
-    public void gen(ref int seed)
+        public void gen(ref int seed)
         {
-            id = 0xdeadbeef;
+            id = 1;
             coords = new int[2];
             coords[0] = 0;
             coords[1] = 0;
@@ -40,20 +40,20 @@ public class Star : Body
             radiation = RandomGen.Interval(100, 10000, ref seed);
         }
 
-}
+    }
 
 
 
-class System
-{
+    class System
+    {
 
-    public int sys_id;
-    public List<Body> Primary_bodies; //no orbitals, they are inherited;
-    public int[] coordinates;
+        public int sys_id;
+        public List<Body> Primary_bodies; //no orbitals, they are inherited;
+        public int[] coordinates;
 
-    public void GenerateSystem(int seed)
+        public void GenerateSystem(int seed)
         {
-            sys_id = 0xdeadbeef;
+            sys_id = 1;
             Primary_bodies = new List<Body>();
             Star star = new Star();
             star.gen(ref seed);
@@ -65,15 +65,15 @@ class System
                 b.coords = new int[2];
                 b.coords[0] = 0;
                 b.coords[1] = b.distance;
-                b.id = 0xdeadbeef;
+                b.id = 1;
                 b.size = RandomGen.Interval(70, 300, ref seed);
-                if (RandomGen.Chance(0.20, seed))
+                if (RandomGen.Chance(0.20f, ref seed))
                 {
                     b.Orbits = new List<Body>();
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
                         Body o = new Body();
-                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 50; 
+                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 50;
                         o.size = RandomGen.Interval(30, 70, ref seed);
                         o.coords = new int[2];
                         o.coords[0] = 0;
@@ -88,40 +88,40 @@ class System
 
                 Primary_bodies.Add(b);
             }
-  
-            
+
+
         }
 
-}
+    }
 
 
 
-class Galaxy
-{
-    public List<System> systems = new List<System>();
-
-
-    public void GenerateGalaxy(int seed, int size = 1000)
+    class Galaxy
     {
-        // scatter spiral without central radius
-        int central_radius = size / 10;
-        for (int i = 0; i < size; i++)
+        public List<System> systems = new List<System>();
+
+
+        public void GenerateGalaxy(int seed, int size = 1000)
         {
-            if (Utility.IsPrime(i))
+            // scatter spiral without central radius
+            int central_radius = size / 10;
+            for (int i = 0; i < size; i++)
             {
-                if (i > central_radius)
+                if (Utility.IsPrime(i))
                 {
-                    System s = new System();
-                    s.coordinates = new int[2];
-                    s.coordinates[0] = (int)(i * Math.Cos((double)i/RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
-                    s.coordinates[1] = (int)(i * Math.Sin((double)i/RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
-                    systems.Add(s);
+                    if (i > central_radius)
+                    {
+                        System s = new System();
+                        s.coordinates = new int[2];
+                        s.coordinates[0] = (int)(i * Math.Cos((double)i / RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
+                        s.coordinates[1] = (int)(i * Math.Sin((double)i / RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
+                        systems.Add(s);
+                    }
+
+
                 }
 
-                
             }
-
         }
     }
-}
 }
