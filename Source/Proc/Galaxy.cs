@@ -115,9 +115,10 @@ class Galaxy
                     s.coordinates = new int[2];
                     s.coordinates[0] = (int)(i * Math.Cos((double)i/RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
                     s.coordinates[1] = (int)(i * Math.Sin((double)i/RandomGen.IntervalF(0.98f, 1.12f, ref seed)));
+                    systems.Add(s);
                 }
 
-                systems.Add(s);
+                
             }
 
         }
