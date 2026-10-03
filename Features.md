@@ -1,3 +1,19 @@
+FEATURES:
+
+Procedural Generation algorythms:
+  - Data structures:
+      - Classes and DS
+  - Stars scatter, spiralization
+  - Celestial bodies generation
+
+  
+GUI:
+  - basic windows form CS controls for proc. generation parameters
+
+
+
+
+
 
 
 
@@ -6,9 +22,8 @@ TODO:
 
 Procedural Generation algorythms:
   - Data structures:
-      - Classes and DS
       - Savefiles
-  - Stars scatter, spiralization and Z-offset
+  - Z-offset
   - Gravity field generation and orbit calculation
   - Celestial bodies generation
   
@@ -30,9 +45,6 @@ Polish:
   - audio effects for GUI
   - bug fixes
   - graphical and audio options
-
-
-
 
 
 Future additions:
