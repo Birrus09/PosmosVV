@@ -43,11 +43,11 @@ namespace PosmosVV.Proc
             }
             if (RandomGen.Chance(0.5f, ref seed))
             {
-                g[1].GenCode = (char)(this.GenCode[1] & 0xF0);
+                g[1].GenCode = (char)(this.GenCode[1] & 0x0F);
             }
             else
             {
-                g[1].GenCode = (char)((this.GenCode[1] & 0x0F) << 4);
+                g[1].GenCode = (char)((this.GenCode[1] & 0xF0) >> 4);
             }
             return g;
         }
