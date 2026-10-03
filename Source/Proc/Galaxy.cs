@@ -124,7 +124,7 @@ class Galaxy
     public List<System> systems;
 
 
-    public void GenerateGalaxy(int seed, int size = 15000f, float deviation = 0.0855f) //0-7
+    public void GenerateGalaxy(int seed, int size = 15000, float deviation = 0.0855f) //0-7
     {
             systems = new List<System>();
         // scatter spiral without central radius
