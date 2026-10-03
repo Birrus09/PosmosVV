@@ -6,15 +6,15 @@ namespace PosmosVV.Proc
     public class Gamete
     {
         public char GenCode = (char)0xF0;
-        public char HighLow = 'H';
+        public char HighLow = 'H'; // can be Low or High, during sexual reproduction two L and two H gamete combine to form two new Chromosomes (chars inside GenCode)
     }
     public class Gene
     {
-        public char[] GenCode = new char[2];
+        public char[] GenCode = new char[2]; //each char is a Chromosome
 
         public void Mutate()
         {
-            //add xor with random power of 2
+            //TODO: add xor with random power of 2
             GenCode[0] = GenCode[0];
         }
 
@@ -28,6 +28,7 @@ namespace PosmosVV.Proc
 
         public Gamete[] Meiosis(ref int seed)
         {
+            //Each chromosome in a gene splits and gives a gamete, one H and one L 
             Gamete[] g = new Gamete[2];
             g[0] = new Gamete();
             g[0].HighLow = 'H';
@@ -69,6 +70,7 @@ namespace PosmosVV.Proc
 
         public char Fenotype(int geneindex)
         {
+            //Fenotype is determined by the strongest chromosome, Genotype is determined by the whole gene
             if (Genes[geneindex].GenCode[0] > Genes[geneindex].GenCode[1])
             {
                 return Genes[geneindex].GenCode[0];
