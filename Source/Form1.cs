@@ -19,13 +19,14 @@ namespace PosmosVV
             Graphics g = e.Graphics;
             g.Clear(Color.Black);
             PosmosVV.Proc.Galaxy ciao = new Proc.Galaxy();
-            
 
+            float galaxySize = 15000f;
+            ciao.GenerateGalaxy(123, (int)galaxySize, 1.055f);
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
 
-            float galaxySize = 2000f;
-            float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) / galaxySize;
+
+            float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             Thread.Sleep(1000);
             foreach (var s in ciao.systems)
             {
