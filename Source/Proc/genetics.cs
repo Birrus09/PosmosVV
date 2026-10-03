@@ -60,7 +60,7 @@ namespace PosmosVV.Proc
         public Gene[] Genes;
         public int ID = 0;
         public int GeneLength = 4;
-        public char sex = 'F';
+        public char sex = 'F'; //H is hermaphrodite
         public int age = 0;
         public bool Virtual = false; //artificial ins.
         public void initialize_genes()
@@ -89,6 +89,7 @@ namespace PosmosVV.Proc
 
         public static Being Clonation(Being Origin)
         {
+            //N -> (N, N)
             Being r = new Being();
             r = Origin;
             r.age = 0;
@@ -99,6 +100,35 @@ namespace PosmosVV.Proc
         public static Being Sexual_Reproduction(Being Male, Being Female, ref int seed)
         {
             //M, F -> (M, F)
+            if (Male.ID == Female.ID)
+            {
+                Being offspring = new Being();
+                for (int i = 0; i < Female.GeneLength; i++)
+                {
+                    Gamete[] M_gams = new Gamete[2];
+                    M_gams = (Male.Genes[i].Meiosis(ref seed));
+                    Gamete[] F_gams = new Gamete[2];
+                    F_gams = (Female.Genes[i].Meiosis(ref seed));
+                    //TODO: fix this, the genes are swapped but always identical
+                    if (RandomGen.Chance(0.5f, ref seed))
+                    {
+                        offspring.Genes[i].GenCode[0] = (char)(M_gams[0].GenCode | F_gams[1].GenCode);
+                        offspring.Genes[i].GenCode[1] = (char)(M_gams[1].GenCode | F_gams[0].GenCode);
+                    }
+                    else
+                    {
+                        offspring.Genes[i].GenCode[1] = (char)(M_gams[0].GenCode | F_gams[1].GenCode);
+                        offspring.Genes[i].GenCode[0] = (char)(M_gams[1].GenCode | F_gams[0].GenCode);
+                    }
+                }
+                return offspring;
+
+            }
+            else
+            {
+                return null;
+            }
+            
             
 
         }
