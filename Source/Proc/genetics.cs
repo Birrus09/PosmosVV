@@ -64,7 +64,7 @@ namespace PosmosVV.Proc
         public int age = 0;
         public bool Virtual = false; //artificial ins.
         public bool Haploid = false; //Females have 0x00 0xFF, Males have 0xFF 0x00
-        public bool Diploid = false;
+        public bool Diploid = false; //in Haplodiploid species the first gene determines queen or worker, in sexual species it determines sex
         public bool Egg = false;
         public void initialize_genes()
         {
@@ -87,6 +87,18 @@ namespace PosmosVV.Proc
         public char[] Genotype(int geneindex)
         {
             return Genes[geneindex].GenCode;
+        }
+    }
+
+    public class Fertilizable_Eusocial_Being : Being{
+        //ant queens and stuff like that
+        public Being Virtual_Genetic_provider;
+
+        public void Assimilate_sperm(Being Male)
+        {
+            Virtual_Genetic_provider = Male;
+            Virtual_Genetic_provider.Virtual = true;
+
         }
     }
 
@@ -139,6 +151,7 @@ namespace PosmosVV.Proc
                 return null;
             }
         }
+
 
         public static Being Parthenogenesis(Being Parent, ref int seed)
         {
