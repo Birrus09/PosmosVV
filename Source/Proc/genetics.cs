@@ -15,7 +15,7 @@ namespace PosmosVV.Proc
         public void Mutate()
         {
             //TODO: add xor with random power of 2
-            GenCode[0] = GenCode[0];
+            GenCode[0] = (char)(GenCode[0] & 0x04);
         }
 
         public Gene Mythosis()
@@ -63,6 +63,9 @@ namespace PosmosVV.Proc
         public char sex = 'F'; //H is hermaphrodite
         public int age = 0;
         public bool Virtual = false; //artificial ins.
+        public bool Haploid = false; //Females have 0x00 0xFF, Males have 0xFF 0x00
+        public bool Diploid = false;
+        public bool Egg = false;
         public void initialize_genes()
         {
             Genes = new Gene[GeneLength];
@@ -79,6 +82,11 @@ namespace PosmosVV.Proc
             {
                 return Genes[geneindex].GenCode[1];
             }
+        }
+
+        public char[] Genotype(int geneindex)
+        {
+            return Genes[geneindex].GenCode;
         }
     }
 
@@ -99,43 +107,77 @@ namespace PosmosVV.Proc
 
         public static Being Sexual_Reproduction(Being Male, Being Female, ref int seed)
         {
-            //M, F -> (M, F)
+            //M, F -> (M, F) 
             if (Male.ID == Female.ID)
             {
-                Being offspring = new Being();
-                for (int i = 0; i < Female.GeneLength; i++)
+                var offspring = new Being();
+                offspring.initialize_genes();
+
+                if (!Male.Haploid && !Female.Diploid)
                 {
-                    Gamete[] M_gams = new Gamete[2];
-                    M_gams = (Male.Genes[i].Meiosis(ref seed));
-                    Gamete[] F_gams = new Gamete[2];
-                    F_gams = (Female.Genes[i].Meiosis(ref seed));
-                    //TODO: fix this, the genes are swapped but always identical
-                    if (RandomGen.Chance(0.5f, ref seed))
+                    for (int i = 0; i < Female.GeneLength; i++)
                     {
+                        Gamete[] M_gams = Male.Genes[i].Meiosis(ref seed);
+                        Gamete[] F_gams = Female.Genes[i].Meiosis(ref seed);
                         offspring.Genes[i].GenCode[0] = (char)(M_gams[0].GenCode | F_gams[1].GenCode);
                         offspring.Genes[i].GenCode[1] = (char)(M_gams[1].GenCode | F_gams[0].GenCode);
                     }
-                    else
+                }
+                else
+                {
+                    offspring.Diploid = true;
+                    for (int i = 0; i < Female.GeneLength; i++)
                     {
-                        offspring.Genes[i].GenCode[1] = (char)(M_gams[0].GenCode | F_gams[1].GenCode);
-                        offspring.Genes[i].GenCode[0] = (char)(M_gams[1].GenCode | F_gams[0].GenCode);
+                        offspring.Genes[i].GenCode[0] = Male.Genes[i].GenCode[0];
+                        offspring.Genes[i].GenCode[1] = Female.Genes[i].GenCode[1];
                     }
                 }
                 return offspring;
-
             }
             else
             {
                 return null;
             }
-            
-            
-
         }
 
-        public static Being Parthenogenesis(Being Female, ref int seed)
+        public static Being Parthenogenesis(Being Parent, ref int seed)
         {
-            // F -> (F, F)            
+            Being offspring = new Being();
+            offspring.initialize_genes();
+            if (Parent.Haploid)
+            {
+                //male drones in haplodiploid species
+                offspring = Clonation(Parent);
+                offspring.Egg = true;
+            }
+            else
+            {
+                for (int i = 0; i < Parent.GeneLength; i++)
+                {
+                    offspring.Genes[i] = Parent.Genes[i].Mythosis();
+                }
+            }
+            return offspring;
+        }
+
+        public static Being DiploidEgg(Being Queen, ref int seed)
+        {
+            if (Queen.Diploid == true)
+            {
+                Being offspring = new Being();
+                offspring.initialize_genes();
+                offspring.Haploid = true;
+                offspring.Egg = true;
+                offspring.sex = 'F';
+                for (int i = 0; i <  Queen.GeneLength; i++)
+                {
+                    Gamete[] FemGam = Queen.Genes[i].Meiosis(ref seed);
+                    offspring.Genes[i].GenCode[1] = (char)(FemGam[0].GenCode | FemGam[1].GenCode);
+                }
+                return offspring;
+            }
+            else return null;
+
         }
         public static Being Androgenesis(Being Female, Being Male, ref int seed)
         {
@@ -151,6 +193,14 @@ namespace PosmosVV.Proc
         public static Being Eusocial_fertilization(Being Female, Being Male)
         {
             //F + M -> (FM, F), always female
+        }
+
+        public static void Crispr(Being Subject, char Chromosome, int Geneindex, int Chromindex = 0)
+        {
+            if (Geneindex < Subject.GeneLength)
+            {
+                Subject.Genes[Geneindex].GenCode[Chromindex] = Chromosome;
+            }
         }
 
     }
