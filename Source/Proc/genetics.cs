@@ -194,8 +194,16 @@ namespace PosmosVV.Proc
         }
         public static Being Androgenesis(Being Female, Being Male, ref int seed)
         {
-            //F + M-> (M, M)
+            Being offspring = new Being();
+            offspring.initialize_genes();
 
+            if (Male.ID == Female.ID){
+                for (int i = 0; i < Male.GeneLength; i++)
+                    {
+                        offspring.Genes[i] = Male.Genes[i].Mythosis();
+
+                return offspring;
+            }
         }
 
         public static Being Hybridogenesis(Being Female, Being Male, ref int seed)
