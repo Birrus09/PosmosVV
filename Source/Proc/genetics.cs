@@ -211,10 +211,10 @@ namespace PosmosVV.Proc
             }
         }
 
-        public static Being Hybridogenesis(Being Female, Being Male, ref int seed)
-        {
+        //public static Being Hybridogenesis(Being Female, Being Male, ref int seed)
+        //{
             //Ff1 + Mm2 -> (F, Mm) (lost gene, new species)
-        }
+        //}
 
         public static void Crispr(Being Subject, char Chromosome, int Geneindex, int Chromindex = 0)
         {
