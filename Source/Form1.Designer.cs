@@ -65,7 +65,7 @@ namespace PosmosVV
             // 
             galaxySizeValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             galaxySizeValueLabel.AutoSize = true;
-            galaxySizeValueLabel.ForeColor = Color.White;
+            galaxySizeValueLabel.ForeColor = Color.Black;
             galaxySizeValueLabel.Location = new Point(12, 310);
             galaxySizeValueLabel.Name = "galaxySizeValueLabel";
             galaxySizeValueLabel.Size = new Size(116, 15);
@@ -88,7 +88,7 @@ namespace PosmosVV
             // 
             scatterValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             scatterValueLabel.AutoSize = true;
-            scatterValueLabel.ForeColor = Color.White;
+            scatterValueLabel.ForeColor = Color.Black;
             scatterValueLabel.Location = new Point(12, 376);
             scatterValueLabel.Name = "scatterValueLabel";
             scatterValueLabel.Size = new Size(106, 15);
