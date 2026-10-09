@@ -29,7 +29,13 @@ namespace PosmosVV
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            galaxySizeTrackBar = new TrackBar();
+            galaxySizeValueLabel = new Label();
+            scatterTrackBar = new TrackBar();
+            scatterValueLabel = new Label();
             startButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -41,6 +47,57 @@ namespace PosmosVV
             panel1.TabIndex = 0;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
+            panel1.Controls.Add(galaxySizeTrackBar);
+            panel1.Controls.Add(galaxySizeValueLabel);
+            panel1.Controls.Add(scatterTrackBar);
+            panel1.Controls.Add(scatterValueLabel);
+            // 
+            // galaxySizeTrackBar
+            // 
+            galaxySizeTrackBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            galaxySizeTrackBar.Location = new Point(8, 329);
+            galaxySizeTrackBar.Minimum = 5000;
+            galaxySizeTrackBar.Maximum = 500000;
+            galaxySizeTrackBar.Name = "galaxySizeTrackBar";
+            galaxySizeTrackBar.Size = new Size(784, 45);
+            galaxySizeTrackBar.TabIndex = 0;
+            galaxySizeTrackBar.TickFrequency = 25000;
+            galaxySizeTrackBar.Value = 8500;
+            galaxySizeTrackBar.ValueChanged += galaxySizeTrackBar_ValueChanged;
+            // 
+            // galaxySizeValueLabel
+            // 
+            galaxySizeValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            galaxySizeValueLabel.AutoSize = true;
+            galaxySizeValueLabel.ForeColor = Color.White;
+            galaxySizeValueLabel.Location = new Point(12, 310);
+            galaxySizeValueLabel.Name = "galaxySizeValueLabel";
+            galaxySizeValueLabel.Size = new Size(116, 15);
+            galaxySizeValueLabel.TabIndex = 1;
+            galaxySizeValueLabel.Text = "Galaxy size: 8500";
+            // 
+            // scatterTrackBar
+            // 
+            scatterTrackBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            scatterTrackBar.Location = new Point(8, 395);
+            scatterTrackBar.Maximum = 100000;
+            scatterTrackBar.Name = "scatterTrackBar";
+            scatterTrackBar.Size = new Size(784, 45);
+            scatterTrackBar.TabIndex = 0;
+            scatterTrackBar.TickFrequency = 10000;
+            scatterTrackBar.Value = 31055;
+            scatterTrackBar.ValueChanged += scatterTrackBar_ValueChanged;
+            // 
+            // scatterValueLabel
+            // 
+            scatterValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            scatterValueLabel.AutoSize = true;
+            scatterValueLabel.ForeColor = Color.White;
+            scatterValueLabel.Location = new Point(12, 376);
+            scatterValueLabel.Name = "scatterValueLabel";
+            scatterValueLabel.Size = new Size(106, 15);
+            scatterValueLabel.TabIndex = 1;
+            scatterValueLabel.Text = "Scatter: 0.31055";
             // 
             // startButton
             // 
@@ -63,11 +120,17 @@ namespace PosmosVV
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)scatterTrackBar).EndInit();
         }
 
         #endregion
 
         private Panel panel1;
+        private TrackBar galaxySizeTrackBar;
+        private Label galaxySizeValueLabel;
+        private TrackBar scatterTrackBar;
+        private Label scatterValueLabel;
         private Button startButton;
     }
 }

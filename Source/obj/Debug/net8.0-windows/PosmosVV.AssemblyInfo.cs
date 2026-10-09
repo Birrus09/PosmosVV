@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PosmosVV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee9d4c9c620b693ec5359182c456e32aee6fc965")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49652eece5f917234901b6339575774e64ab1c92")]
 [assembly: System.Reflection.AssemblyProductAttribute("PosmosVV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PosmosVV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
