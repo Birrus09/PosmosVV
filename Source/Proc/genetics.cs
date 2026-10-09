@@ -216,11 +216,6 @@ namespace PosmosVV.Proc
             //Ff1 + Mm2 -> (F, Mm) (lost gene, new species)
         }
 
-        public static Being Eusocial_fertilization(Being Female, Being Male)
-        {
-            //F + M -> (FM, F), always female
-        }
-
         public static void Crispr(Being Subject, char Chromosome, int Geneindex, int Chromindex = 0)
         {
             if (Geneindex < Subject.GeneLength)
