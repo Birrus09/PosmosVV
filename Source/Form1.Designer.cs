@@ -29,6 +29,7 @@ namespace PosmosVV
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            startButton = new Button();
             SuspendLayout();
             // 
             // panel1
@@ -38,13 +39,25 @@ namespace PosmosVV
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 450);
             panel1.TabIndex = 0;
+            panel1.Visible = false;
             panel1.Paint += panel1_Paint;
+            // 
+            // startButton
+            // 
+            startButton.Location = new Point(360, 207);
+            startButton.Name = "startButton";
+            startButton.Size = new Size(80, 36);
+            startButton.TabIndex = 1;
+            startButton.Text = "Start";
+            startButton.UseVisualStyleBackColor = true;
+            startButton.Click += startButton_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(startButton);
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +68,6 @@ namespace PosmosVV
         #endregion
 
         private Panel panel1;
+        private Button startButton;
     }
 }

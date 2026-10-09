@@ -14,6 +14,13 @@ namespace PosmosVV
 
         }
 
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            startButton.Visible = false;
+            panel1.Visible = true;
+            panel1.Invalidate();
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;

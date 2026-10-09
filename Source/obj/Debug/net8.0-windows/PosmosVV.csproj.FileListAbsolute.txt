@@ -1,0 +1,7 @@
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.Form1.resources
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.csproj.GenerateResource.cache
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.AssemblyInfoInputs.cache
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.AssemblyInfo.cs
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.csproj.CoreCompileInputs.cache
+/workspaces/PosmosVV/Source/obj/Debug/net8.0-windows/PosmosVV.sourcelink.json
