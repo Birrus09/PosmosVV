@@ -35,9 +35,9 @@ public class Star : Body
             coords[0] = 0;
             coords[1] = 0;
             size = RandomGen.Interval(100, 500, ref seed);
-            temperature = RandomGen.IntervalF(3000.0f, 10000.0f, ref seed);
+            temperature = RandomGen.IntervalF(3000.0f, 10000.0f, ref seed) * size * 2 / 500;
             out_temp = (int)temperature / 10;
-            radiation = RandomGen.Interval(100, 10000, ref seed);
+            radiation = RandomGen.Interval(100, 10000, ref seed) * out_temp * size / 500;
         }
 
 }
