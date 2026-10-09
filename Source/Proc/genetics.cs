@@ -100,6 +100,11 @@ namespace PosmosVV.Proc
             Virtual_Genetic_provider.Virtual = true;
 
         }
+        public Being Lay_Eusocial_Egg(ref int seed){
+            Being n = new Being();
+            n = Sexual_Reproduction(Virtual_Genetic_provider, this, ref seed)
+            return n;
+        }
     }
 
 
