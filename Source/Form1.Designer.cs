@@ -47,10 +47,6 @@ namespace PosmosVV
             panel1.TabIndex = 0;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
-            panel1.Controls.Add(galaxySizeTrackBar);
-            panel1.Controls.Add(galaxySizeValueLabel);
-            panel1.Controls.Add(scatterTrackBar);
-            panel1.Controls.Add(scatterValueLabel);
             // 
             // galaxySizeTrackBar
             // 
@@ -115,6 +111,10 @@ namespace PosmosVV
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(startButton);
+            Controls.Add(galaxySizeTrackBar);
+            Controls.Add(galaxySizeValueLabel);
+            Controls.Add(scatterTrackBar);
+            Controls.Add(scatterValueLabel);
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";

@@ -17,6 +17,10 @@ namespace PosmosVV
         private void startButton_Click(object sender, EventArgs e)
         {
             startButton.Visible = false;
+            galaxySizeTrackBar.Visible = false;
+            galaxySizeValueLabel.Visible = false;
+            scatterTrackBar.Visible = false;
+            scatterValueLabel.Visible = false;
             panel1.Visible = true;
             panel1.Invalidate();
         }
