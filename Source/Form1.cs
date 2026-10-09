@@ -21,7 +21,7 @@ namespace PosmosVV
             PosmosVV.Proc.Galaxy ciao = new Proc.Galaxy();
 
             float galaxySize = 15000f;
-            ciao.GenerateGalaxy(123, (int)galaxySize, 1.055f);
+            ciao.GenerateGalaxy(123, (int)galaxySize, 0.155f);
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
 
