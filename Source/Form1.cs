@@ -21,7 +21,7 @@ namespace PosmosVV
             PosmosVV.Proc.Galaxy ciao = new Proc.Galaxy();
 
             float galaxySize = 15000f;
-            ciao.GenerateGalaxy(123, (int)galaxySize, 0.155f);
+            ciao.GenerateGalaxy(123, (int)galaxySize, 0.1055f);
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
 
@@ -35,7 +35,15 @@ namespace PosmosVV
 
                 float starSize = Math.Max(1f, 2f * scale);
 
-                g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, starSize, starSize);
+                if (s.Primary_bodies[0].size > 350)
+                {
+                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, 2 * starSize, 2 * starSize);
+                }
+                else
+                {
+                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, starSize, starSize);
+                }
+
             }
         }
     }
