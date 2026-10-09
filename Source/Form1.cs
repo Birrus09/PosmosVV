@@ -36,9 +36,6 @@ namespace PosmosVV
                 float starSize = Math.Max(1f, 2f * scale);
 
                 g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, starSize, starSize);
-
-                //system.primary_bodies[0] è sempre la stella del isstema
-                //aggiungi luminosità  varaiabile im base alla outer_radiation della stella
             }
         }
     }
