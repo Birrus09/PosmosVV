@@ -20,6 +20,8 @@ GUI:
 
 TODO:
 
+add constructors
+
 Procedural Generation algorythms:
   - Data structures:
       - Savefiles
