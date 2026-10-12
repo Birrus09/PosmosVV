@@ -64,14 +64,17 @@ namespace PosmosVV
                 float y = centerY + s.coordinates[1] * scale;
 
                 float starSize = Math.Max(1f, 2f * scale);
-
-                if (s.Primary_bodies[0].size > 350)
+                if (s.Primary_bodies[0].size > 450)
                 {
-                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, 2 * starSize, 2 * starSize);
+                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, 4 * starSize, 3 * starSize);
+                }
+                else if (s.Primary_bodies[0].size > 350)
+                {
+                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, 4 * starSize, 3 * starSize);
                 }
                 else
                 {
-                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, starSize, starSize);
+                    g.FillEllipse(Brushes.White, x - starSize / 2, y - starSize / 2, 2 * starSize, 2 * starSize);
                 }
 
             }
