@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 namespace PosmosVV.Proc
 {
-
-
+    //genes are 1 or 0
     public class Gamete
     {
         public char GenCode = (char)0xF0;
         public char HighLow = 'H'; // can be Low or High, during sexual reproduction two L and two H gamete combine to form two new Chromosomes (chars inside GenCode)
     }
-    public class Gene
+    public class Chromecouple
     {
         public char[] GenCode = new char[2]; //each char is a Chromosome
 
@@ -18,9 +17,9 @@ namespace PosmosVV.Proc
             GenCode[0] = (char)(GenCode[0] & 0x04);
         }
 
-        public Gene Mythosis()
+        public Chromecouple Mythosis()
         {
-            Gene g = new Gene();
+            Chromecouple g = new Chromecouple();
             g.GenCode[0] = (char)((this.GenCode[0] & 0xF0) | (this.GenCode[1] & 0x0F));
             g.GenCode[1] = (char)((this.GenCode[1] & 0xF0) | (this.GenCode[0] & 0x0F));
             return g;
@@ -28,7 +27,7 @@ namespace PosmosVV.Proc
 
         public Gamete[] Meiosis(ref int seed)
         {
-            //Each chromosome in a gene splits and gives a gamete, one H and one L 
+            //Each chromosome in a Chromecouple splits and gives a gamete, one H and one L
             Gamete[] g = new Gamete[2];
             g[0] = new Gamete();
             g[0].HighLow = 'H';
@@ -57,53 +56,36 @@ namespace PosmosVV.Proc
 
     public class Being
     {
-        public Gene[] Genes;
+        public Chromecouple[] Chromecouples;
         public int ID = 0;
-        public int GeneLength = 4;
+        public int ChromecoupleLength = 4;
         public char sex = 'F'; //H is hermaphrodite
         public int age = 0;
         public bool Virtual = false; //artificial ins.
         public bool Haploid = false; //Females have 0x00 0xFF, Males have 0xFF 0x00
-        public bool Diploid = false; //in Haplodiploid species the first gene determines queen or worker, in sexual species it determines sex
+        public bool Diploid = false; //in Haplodiploid species the first Chromecouple determines queen or worker, in sexual species it determines sex
         public bool Egg = false;
-        public void initialize_genes()
+        public void initialize_Chromecouples()
         {
-            Genes = new Gene[GeneLength];
+            Chromecouples = new Chromecouple[ChromecoupleLength];
         }
 
-        public char Fenotype(int geneindex)
+        public char Fenotype(int Chromecoupleindex)
         {
-            //Fenotype is determined by the strongest chromosome, Genotype is determined by the whole gene
-            if (Genes[geneindex].GenCode[0] > Genes[geneindex].GenCode[1])
+            //Fenotype is determined by the strongest chromosome, Genotype is determined by the whole Chromecouple
+            if (Chromecouples[Chromecoupleindex].GenCode[0] > Chromecouples[Chromecoupleindex].GenCode[1])
             {
-                return Genes[geneindex].GenCode[0];
+                return Chromecouples[Chromecoupleindex].GenCode[0];
             }
             else
             {
-                return Genes[geneindex].GenCode[1];
+                return Chromecouples[Chromecoupleindex].GenCode[1];
             }
         }
 
-        public char[] Genotype(int geneindex)
+        public char[] Genotype(int Chromecoupleindex)
         {
-            return Genes[geneindex].GenCode;
-        }
-    }
-
-    public class Fertilizable_Eusocial_Being : Being{
-        //ant queens and stuff like that
-        public Being Virtual_Genetic_provider;
-
-        public void Assimilate_sperm(Being Male)
-        {
-            Virtual_Genetic_provider = Male;
-            Virtual_Genetic_provider.Virtual = true;
-
-        }
-        public Being Lay_Eusocial_Egg(ref int seed){
-            Being n = new Being();
-            n = Sexual_Reproduction(Virtual_Genetic_provider, this, ref seed)
-            return n;
+            return Chromecouples[Chromecoupleindex].GenCode;
         }
     }
 
@@ -124,29 +106,29 @@ namespace PosmosVV.Proc
 
         public static Being Sexual_Reproduction(Being Male, Being Female, ref int seed)
         {
-            //M, F -> (M, F) 
+            //M, F -> (M, F)
             if (Male.ID == Female.ID)
             {
                 var offspring = new Being();
-                offspring.initialize_genes();
+                offspring.initialize_Chromecouples();
 
                 if (!Male.Haploid && !Female.Diploid)
                 {
-                    for (int i = 0; i < Female.GeneLength; i++)
+                    for (int i = 0; i < Female.ChromecoupleLength; i++)
                     {
-                        Gamete[] M_gams = Male.Genes[i].Meiosis(ref seed);
-                        Gamete[] F_gams = Female.Genes[i].Meiosis(ref seed);
-                        offspring.Genes[i].GenCode[0] = (char)(M_gams[0].GenCode | F_gams[1].GenCode);
-                        offspring.Genes[i].GenCode[1] = (char)(M_gams[1].GenCode | F_gams[0].GenCode);
+                        Gamete[] M_gams = Male.Chromecouples[i].Meiosis(ref seed);
+                        Gamete[] F_gams = Female.Chromecouples[i].Meiosis(ref seed);
+                        offspring.Chromecouples[i].GenCode[0] = (char)(M_gams[0].GenCode | F_gams[1].GenCode);
+                        offspring.Chromecouples[i].GenCode[1] = (char)(M_gams[1].GenCode | F_gams[0].GenCode);
                     }
                 }
                 else
                 {
                     offspring.Diploid = true;
-                    for (int i = 0; i < Female.GeneLength; i++)
+                    for (int i = 0; i < Female.ChromecoupleLength; i++)
                     {
-                        offspring.Genes[i].GenCode[0] = Male.Genes[i].GenCode[0];
-                        offspring.Genes[i].GenCode[1] = Female.Genes[i].GenCode[1];
+                        offspring.Chromecouples[i].GenCode[0] = Male.Chromecouples[i].GenCode[0];
+                        offspring.Chromecouples[i].GenCode[1] = Female.Chromecouples[i].GenCode[1];
                     }
                 }
                 return offspring;
@@ -158,10 +140,10 @@ namespace PosmosVV.Proc
         }
 
 
-        public static Being Parthenogenesis(Being Parent, ref int seed)
+        public static Being ParthenoChromecouplesis(Being Parent, ref int seed)
         {
             Being offspring = new Being();
-            offspring.initialize_genes();
+            offspring.initialize_Chromecouples();
             if (Parent.Haploid)
             {
                 //male drones in haplodiploid species
@@ -170,9 +152,9 @@ namespace PosmosVV.Proc
             }
             else
             {
-                for (int i = 0; i < Parent.GeneLength; i++)
+                for (int i = 0; i < Parent.ChromecoupleLength; i++)
                 {
-                    offspring.Genes[i] = Parent.Genes[i].Mythosis();
+                    offspring.Chromecouples[i] = Parent.Chromecouples[i].Mythosis();
                 }
             }
             return offspring;
@@ -183,47 +165,84 @@ namespace PosmosVV.Proc
             if (Queen.Diploid == true)
             {
                 Being offspring = new Being();
-                offspring.initialize_genes();
+                offspring.initialize_Chromecouples();
                 offspring.Haploid = true;
                 offspring.Egg = true;
                 offspring.sex = 'F';
-                for (int i = 0; i <  Queen.GeneLength; i++)
+                for (int i = 0; i <  Queen.ChromecoupleLength; i++)
                 {
-                    Gamete[] FemGam = Queen.Genes[i].Meiosis(ref seed);
-                    offspring.Genes[i].GenCode[1] = (char)(FemGam[0].GenCode | FemGam[1].GenCode);
+                    Gamete[] FemGam = Queen.Chromecouples[i].Meiosis(ref seed);
+                    offspring.Chromecouples[i].GenCode[1] = (char)(FemGam[0].GenCode | FemGam[1].GenCode);
                 }
                 return offspring;
             }
             else return null;
 
         }
-        public static Being Androgenesis(Being Female, Being Male, ref int seed)
+        public static Being AndroChromecouplesis(Being Female, Being Male, ref int seed)
         {
             Being offspring = new Being();
-            offspring.initialize_genes();
+            offspring.initialize_Chromecouples();
 
             if (Male.ID == Female.ID){
-                for (int i = 0; i < Male.GeneLength; i++)
-                    {
-                        offspring.Genes[i] = Male.Genes[i].Mythosis();
-
+                for (int i = 0; i < Male.ChromecoupleLength; i++)
+                {
+                    offspring.Chromecouples[i] = Male.Chromecouples[i].Mythosis();
+                }
                 return offspring;
+            }
+            else {
+                    return null;
             }
         }
 
-        //public static Being Hybridogenesis(Being Female, Being Male, ref int seed)
+        //public static Being HybridoChromecouplesis(Being Female, Being Male, ref int seed)
         //{
-            //Ff1 + Mm2 -> (F, Mm) (lost gene, new species)
+            //Ff1 + Mm2 -> (F, Mm) (lost Chromecouple, new species)
         //}
 
-        public static void Crispr(Being Subject, char Chromosome, int Geneindex, int Chromindex = 0)
+        public static void Crispr(Being Subject, char Chromosome, int Chromecoupleindex, int Chromindex = 0)
         {
-            if (Geneindex < Subject.GeneLength)
+            if (Chromecoupleindex < Subject.ChromecoupleLength)
             {
-                Subject.Genes[Geneindex].GenCode[Chromindex] = Chromosome;
+                Subject.Chromecouples[Chromecoupleindex].GenCode[Chromindex] = Chromosome;
             }
         }
 
     }
+    public class Fertilizable_Eusocial_Being : Being
+    {
+        //ant queens and stuff like that
+        public Being Virtual_Chromecoupletic_provider;
+
+        public void Assimilate_sperm(Being Male)
+        {
+            Virtual_Chromecoupletic_provider = Male;
+            Virtual_Chromecoupletic_provider.Virtual = true;
+
+        }
+        public Being Lay_Eusocial_Egg(ref int seed)
+        {
+            Being n = new Being();
+            n = GenFunc.Sexual_Reproduction(Virtual_Chromecoupletic_provider, this, ref seed);
+            return n;
+        }
+    }
 
 }
+
+
+//example:
+// Being Species_Sblibup = new Being(null, 123, 6, 'V', -1, true, false, false, false)
+// Species_Sblibup.initialize_Chromecouple
+// starter1 = Genfunc.Clonation(Species_Sblibup)
+// starter1.sex = 'F'
+// starter1.virtual = false
+// starter2 = Genfunc.Clonation(Species_Sblibup)
+// starter2.sex = 'F'
+// starter2.virtual = false
+// starter3 = Genfunc.Clonation(Species_Sblibup)
+// starter3.sex = 'F'
+// starter3.virtual = false
+// now you have population starters
+//probably should keep population in a vector
