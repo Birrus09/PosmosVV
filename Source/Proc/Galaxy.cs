@@ -140,12 +140,35 @@ namespace PosmosVV.Proc
                         s.coordinates[0] = (int)(i * Math.Cos((double)i / RandomGen.IntervalF(1.0f - 0.0001f * deviation, 1.0f + 0.0001f * deviation, ref seed)));
                         s.coordinates[1] = (int)(i * Math.Sin((double)i / RandomGen.IntervalF(1.0f - 0.0001f * deviation, 1.0f + 0.0001f * deviation, ref seed)));
                         s.GenerateSystem(ref seed);
-                        systems.Add(s);
+                        if (Math.Sqrt(s.coordinates[0] * s.coordinates[0] + s.coordinates[1] * s.coordinates[1]) > central_radius)
+                        {
+                            systems.Add(s);
+                        }
+                       
                     }
 
 
                 }
 
+            }
+        }
+
+        public void GenerateGalaxy2(int seed, int size = 15000, float Spiral = 0.0100f, float spread = 0.0f)
+        {
+            systems = new List<System>();
+            for (int i = 0; i < size; i++)
+            {
+                if (Utility.IsPrime(i))
+                {
+                    float angle = i * Spiral + RandomGen.IntervalF(-spread, spread, ref seed);
+                    System s = new System();
+                    s.GenerateSystem(ref seed);
+                    s.coordinates = new int[2];
+                    s.coordinates[0] = (int)(i * Math.Cos(angle));
+                    s.coordinates[1] = (int)(i * Math.Sin(angle));
+                    systems.Add(s);
+                }
+               
             }
         }
     }
