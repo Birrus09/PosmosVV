@@ -122,6 +122,7 @@ namespace PosmosVV.Proc
     class Galaxy
     {
         public List<System> systems;
+        int starsize = 0;
 
 
         public void GenerateGalaxy(int seed, int size = 15000, float deviation = 0.0855f) //0-7
@@ -143,6 +144,7 @@ namespace PosmosVV.Proc
                         if (Math.Sqrt(s.coordinates[0] * s.coordinates[0] + s.coordinates[1] * s.coordinates[1]) > central_radius)
                         {
                             systems.Add(s);
+                            starsize++;
                         }
                        
                     }
@@ -153,20 +155,25 @@ namespace PosmosVV.Proc
             }
         }
 
-        public void GenerateGalaxy2(int seed, int size = 15000, float Spiral = 0.0100f, float spread = 0.0f)
+        public void GenerateGalaxy2(int seed, int size = 30000, float Spiral = 0.15f, float spread = 0.24f, float density = 0.27f)
         {
             systems = new List<System>();
             for (int i = 0; i < size; i++)
             {
-                if (Utility.IsPrime(i))
+                if (Utility.IsPrime(i) && !RandomGen.Chance((float)i/(2 * size * density), ref seed))
                 {
                     float angle = i * Spiral + RandomGen.IntervalF(-spread, spread, ref seed);
                     System s = new System();
                     s.GenerateSystem(ref seed);
+                    int central_radius = size / 40;
                     s.coordinates = new int[2];
-                    s.coordinates[0] = (int)(i * Math.Cos(angle));
-                    s.coordinates[1] = (int)(i * Math.Sin(angle));
-                    systems.Add(s);
+                    s.coordinates[0] = (int)(i * Math.Cos(angle))/2;
+                    s.coordinates[1] = (int)(i * Math.Sin(angle))/2;
+                    if (Math.Sqrt(s.coordinates[0] * s.coordinates[0] + s.coordinates[1] * s.coordinates[1]) > central_radius)
+                    {
+                        systems.Add(s);
+                        starsize++;
+                    }
                 }
                
             }
