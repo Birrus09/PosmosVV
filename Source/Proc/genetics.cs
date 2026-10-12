@@ -11,6 +11,13 @@ namespace PosmosVV.Proc
     {
         public char[] GenCode = new char[2]; //each char is a Chromosome
 
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        //                                                  //
+        // FIRST CHROMOSOME COUPLE IS ALWAYS A FLAG SET     //
+        //                                                  //
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+
         public void Mutate()
         {
             //TODO: add xor with random power of 2
@@ -65,6 +72,15 @@ namespace PosmosVV.Proc
         public bool Haploid = false; //Females have 0x00 0xFF, Males have 0xFF 0x00
         public bool Diploid = false; //in Haplodiploid species the first Chromecouple determines queen or worker, in sexual species it determines sex
         public bool Egg = false;
+
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        //                                                  //
+        // FIRST CHROMOSOME COUPLE IS ALWAYS A FLAG SET     //
+        //                                                  //
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+
+
         public void initialize_Chromecouples()
         {
             Chromecouples = new Chromecouple[ChromecoupleLength];
@@ -140,7 +156,7 @@ namespace PosmosVV.Proc
         }
 
 
-        public static Being ParthenoChromecouplesis(Being Parent, ref int seed)
+        public static Being ParthenoGenesis(Being Parent, ref int seed)
         {
             Being offspring = new Being();
             offspring.initialize_Chromecouples();
@@ -179,7 +195,7 @@ namespace PosmosVV.Proc
             else return null;
 
         }
-        public static Being AndroChromecouplesis(Being Female, Being Male, ref int seed)
+        public static Being AndroGenesis(Being Female, Being Male, ref int seed)
         {
             Being offspring = new Being();
             offspring.initialize_Chromecouples();
@@ -196,7 +212,7 @@ namespace PosmosVV.Proc
             }
         }
 
-        //public static Being HybridoChromecouplesis(Being Female, Being Male, ref int seed)
+        //public static Being HybridoGenesis(Being Female, Being Male, ref int seed)
         //{
             //Ff1 + Mm2 -> (F, Mm) (lost Chromecouple, new species)
         //}
@@ -213,18 +229,20 @@ namespace PosmosVV.Proc
     public class Fertilizable_Eusocial_Being : Being
     {
         //ant queens and stuff like that
-        public Being Virtual_Chromecoupletic_provider;
+        public Being Virtual_Genetic_provider;
 
         public void Assimilate_sperm(Being Male)
-        {
-            Virtual_Chromecoupletic_provider = Male;
-            Virtual_Chromecoupletic_provider.Virtual = true;
+        { 
+            Virtual_Genetic_provider = Male;
+            Virtual_Genetic_provider.Virtual = true;
+            this.Diploid = true;
+            this.Haploid = false;
 
         }
         public Being Lay_Eusocial_Egg(ref int seed)
         {
             Being n = new Being();
-            n = GenFunc.Sexual_Reproduction(Virtual_Chromecoupletic_provider, this, ref seed);
+            n = GenFunc.Sexual_Reproduction(Virtual_Genetic_provider, this, ref seed);
             return n;
         }
     }
@@ -246,3 +264,17 @@ namespace PosmosVV.Proc
 // starter3.virtual = false
 // now you have population starters
 //probably should keep population in a vector
+
+
+//example for haplodiploid species:
+//Being Species_Sblibup = new Being(null, 123, 'V', -1, true, true, false, false)
+//Species_Sblibup.initialize_Chromecouple
+//Sbliblup_male_drone = Genfunc.Clonation(Species_Sblibup)
+//Sbliblup_male_drone.sex = 'M'
+//Fertilizable_Eusocial_Being Sblibup_Queen = Genfunc.Clonation(Species_Sblibup)
+//Sblibup_Queen.sex = 'F'
+//Sblibup_Queen.assimilate_sperm(Sbliblup_male_drone);
+
+//now the queen can:
+//Sbliblup_Queen.lay_eusocial_egg if species lays eggs (1st chromosome, 8th gene on 1)
+//Genfunc.lay_egg(Sbliblup_Queen, ref seed) if species lays pupae (1st chromosome, 8th gene on 0)
