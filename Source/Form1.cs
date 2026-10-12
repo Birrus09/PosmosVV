@@ -51,7 +51,8 @@ namespace PosmosVV
             PosmosVV.Proc.Galaxy ciao = new Proc.Galaxy();
 
             int galaxySize = galaxySizeTrackBar.Value;
-            ciao.GenerateGalaxy(123, galaxySize, scatterTrackBar.Value / 100000f);
+            //ciao.GenerateGalaxy(123, galaxySize, scatterTrackBar.Value / 100000f);
+            ciao.GenerateGalaxy2(653);
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
 
