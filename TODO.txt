@@ -1,0 +1,6 @@
+-clickable stars to open systems
+-systems sprites
+-music
+-astral bodies type determination
+-automatic fullscreen
+-controls to select aglorithms (1 or 2)
