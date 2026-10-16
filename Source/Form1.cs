@@ -3,6 +3,8 @@ namespace PosmosVV
     public partial class Form1 : Form
     {
         private PosmosVV.Proc.Galaxy ciao;
+        private PosmosVV.Proc.Galaxy tt; //ho paura di modificare ciao
+        bool gen = false;
         public Form1()
         {
             InitializeComponent();
@@ -16,12 +18,18 @@ namespace PosmosVV
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
             startButton.Visible = false;
             galaxySizeTrackBar.Visible = false;
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
             scatterValueLabel.Visible = false;
             panel1.Visible = true;
+
+            gen = true;
+
             panel1.Invalidate();
         }
 
@@ -55,6 +63,7 @@ namespace PosmosVV
             ciao.GenerateGalaxy2(653);
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
+            tt = ciao;
 
 
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
@@ -78,6 +87,21 @@ namespace PosmosVV
                 }
 
             }
+        }
+
+        //exp
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!gen) { return; }
+            int x = e.X;
+            int y = e.Y;
+            float centerX = panel1.ClientSize.Width / 2f;
+            float centerY = panel1.ClientSize.Height / 2f;
+            int galaxySize = galaxySizeTrackBar.Value;
+            float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
+            //MessageBox.Show($"X: {x}, Y: {y}");
+            tt.Compare(x, y, centerX, centerY, scale);
         }
     }
 }
