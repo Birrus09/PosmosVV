@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 namespace PosmosVV.Proc
 {
 
@@ -176,6 +177,47 @@ namespace PosmosVV.Proc
                     }
                 }
                
+            }
+            /*
+            string outputThing = "";
+            foreach (System s in systems)
+            {
+                int x = s.coordinates[0];
+                int y = s.coordinates[1];
+
+                outputThing += $"X: {x}, Y: {y}\n";
+            }
+            MessageBox.Show(outputThing);
+            */
+        }
+
+        //exp
+
+        public void Compare(float X, float Y, float centerX, float centerY, float scale)
+        {
+            float Xorig = (X - centerX) / scale;
+            float Yorig = (Y - centerY) / scale;
+            int integ = -1;
+
+            float minOffset = -65f;
+            float maxOffset = 65f;
+
+            for (int i = 0; i < systems.Count; i++)
+            {
+                if (Xorig - systems[i].coordinates[0] < maxOffset && Yorig - systems[i].coordinates[1] < maxOffset && Xorig - systems[i].coordinates[0] > minOffset && Yorig - systems[i].coordinates[1] > minOffset)
+                {
+                    integ = i;
+                    break;
+                }
+            }
+
+            if (integ != -1)
+            {
+                MessageBox.Show($"Nice catch! \nThis is system #{integ}\n" + $"X: {systems[integ].coordinates[0]}\n" + $"Y: {systems[integ].coordinates[1]}");
+            }
+            else
+            {
+                MessageBox.Show($"airball");
             }
         }
     }
