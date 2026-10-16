@@ -35,6 +35,7 @@ Graphics (💀):
   -movement system (drag and scroll, WASD)
   - lights shader (GLSL)
   - celestial bodies texture procedural generation
+  - (migrate to unity pls? 🤤👁)
   
 
 GUI:
