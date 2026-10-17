@@ -28,26 +28,18 @@ namespace PosmosVV
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             galaxySizeTrackBar = new TrackBar();
             galaxySizeValueLabel = new Label();
             scatterTrackBar = new TrackBar();
             scatterValueLabel = new Label();
             startButton = new Button();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 450);
-            panel1.TabIndex = 0;
-            panel1.Visible = false;
-            panel1.Paint += panel1_Paint;
-            panel1.MouseClick += Form1_MouseClick;
             // 
             // galaxySizeTrackBar
             // 
@@ -66,7 +58,7 @@ namespace PosmosVV
             // 
             galaxySizeValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             galaxySizeValueLabel.AutoSize = true;
-            galaxySizeValueLabel.ForeColor = Color.Black;
+            galaxySizeValueLabel.ForeColor = Color.White;
             galaxySizeValueLabel.Location = new Point(12, 310);
             galaxySizeValueLabel.Name = "galaxySizeValueLabel";
             galaxySizeValueLabel.Size = new Size(93, 15);
@@ -89,7 +81,7 @@ namespace PosmosVV
             // 
             scatterValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             scatterValueLabel.AutoSize = true;
-            scatterValueLabel.ForeColor = Color.Black;
+            scatterValueLabel.ForeColor = Color.White;
             scatterValueLabel.Location = new Point(12, 376);
             scatterValueLabel.Name = "scatterValueLabel";
             scatterValueLabel.Size = new Size(88, 15);
@@ -106,11 +98,33 @@ namespace PosmosVV
             startButton.UseVisualStyleBackColor = true;
             startButton.Click += startButton_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(-2, 197);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(805, 253);
+            panel1.TabIndex = 0;
+            panel1.Visible = false;
+            panel1.Paint += panel1_Paint;
+            panel1.MouseClick += Form1_MouseClick;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(99, 70);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(602, 111);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Black;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
             Controls.Add(startButton);
             Controls.Add(galaxySizeTrackBar);
             Controls.Add(galaxySizeValueLabel);
@@ -123,17 +137,18 @@ namespace PosmosVV
             MouseClick += Form1_MouseClick;
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
         private TrackBar galaxySizeTrackBar;
         private Label galaxySizeValueLabel;
         private TrackBar scatterTrackBar;
         private Label scatterValueLabel;
         private Button startButton;
+        private Panel panel1;
+        private PictureBox pictureBox1;
     }
 }
