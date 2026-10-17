@@ -198,13 +198,12 @@ namespace PosmosVV.Proc
             float Xorig = (X - centerX) / scale;
             float Yorig = (Y - centerY) / scale;
             int integ = -1;
-
-            float minOffset = -65f;
+            
             float maxOffset = 65f;
 
             for (int i = 0; i < systems.Count; i++)
             {
-                if (Xorig - systems[i].coordinates[0] < maxOffset && Yorig - systems[i].coordinates[1] < maxOffset && Xorig - systems[i].coordinates[0] > minOffset && Yorig - systems[i].coordinates[1] > minOffset)
+                if (Math.Abs(Xorig - systems[i].coordinates[0]) < maxOffset && Math.Abs(Yorig - systems[i].coordinates[1]) < maxOffset)
                 {
                     integ = i;
                     break;
