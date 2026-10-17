@@ -52,7 +52,7 @@ namespace PosmosVV
             MinimizeBox = false;
             MinimumSize = new Size(800, 620);
             Name = "Form2";
-            Text = "Inspector";
+            Text = "StarSpector";
             Load += Form2_Load;
             ResumeLayout(false);
         }
