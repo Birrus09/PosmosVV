@@ -1,4 +1,4 @@
 -systems sprites
--music
--astral bodies type determination
 -controls to select aglorithms (1 or 2)
+-add constructors in galaxy.cs
+-implement genetics simulation (async loop in main)
