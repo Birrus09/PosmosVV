@@ -16,6 +16,7 @@ namespace PosmosVV.Proc
         public float revolution_speed;
         public List<Body> Orbits;
         public int distance;
+        public bool hasOrbitals = false;
 
 public void FindType(ref int seed)
 {
@@ -148,8 +149,13 @@ public void FindType(ref int seed)
                 b.coords[1] = 0;
                 b.id = 1;
                 b.size = RandomGen.Interval(70, 300, ref seed);
+                if(i == 0)
+                {
+                    b.hasOrbitals = true;
+                }
                 if (RandomGen.Chance(0.20f, ref seed))
                 {
+                    b.hasOrbitals = true;
                     b.Orbits = new List<Body>();
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
