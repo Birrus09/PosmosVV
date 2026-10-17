@@ -17,11 +17,85 @@ namespace PosmosVV.Proc
         public List<Body> Orbits;
         public int distance;
 
-        public void FindType()
-        {
-            type = "placeholder";
+public void FindType(ref int seed)
+{
+    double xpol = temperature / 400.0f;
+    double ypol = RandomGen.IntervalF(-50.0f, 50.0f, ref seed);
+    //             rocky
+    //  temp --------------------- >
+    //hum
+    // |  barren    arid      molten
+    // |
+    // |
+    // |   tundra   gaia      primworld
+    // |
+    // |
+    // |   frozen   tropical   stormworld
+    // V
 
+    
+    if (xpol > 10.0f)
+    {
+        if (ypol > 10.0f)
+        {
+            type = "stormworld";
         }
+        if (ypol < -10.0f)
+        {
+            type = "molten";
+        }
+        else
+        {
+            type = "primworld";
+        }
+    }
+    if (xpol < -10.0f)
+    {
+        if (ypol > 10.0f)
+        {
+            type = "frozen";
+        }
+        if (ypol < -10.0f)
+        {
+            type = "barren";
+        }
+        else
+        {
+            type = "tundra";
+        }
+
+    }
+    else
+    {
+        if (ypol > 10.0f)
+        {
+            type = "tropical";
+        }
+        if (ypol < -10.0f)
+        {
+            type = "arid";
+        }
+        else
+        {
+            type = "gaia";
+        }
+
+    }
+
+
+    //            gasseous
+
+        //  temp --------------------- >
+        //hum
+        // |   dusty            hellstorm
+        // |
+        // |
+        // |   
+        // |
+        // |
+        // |   inferno          tornado
+        // |    
+}
 
     }
 
@@ -109,7 +183,7 @@ namespace PosmosVV.Proc
                 b.temperature = (b.temperature) * 0.4f + (star.out_temp - 5000.0f) * 0.6f;
 
 
-                b.FindType();
+                b.FindType(ref seed);
 
                 Primary_bodies.Add(b);
             }
