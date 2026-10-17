@@ -1,0 +1,36 @@
+using PosmosVV.Proc;
+using System;
+
+namespace PosmosVV.GUI
+{
+    class GUI_util
+    {
+        public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy)
+        {
+            float Xorig = (X - centerX) / scale;
+            float Yorig = (Y - centerY) / scale;
+            int integ = -1;
+
+            float maxOffset = 50f;
+
+            for (int i = 0; i < galaxy.systems.Count; i++)
+            {
+                if (Math.Abs(Xorig - galaxy.systems[i].coordinates[0]) < maxOffset && Math.Abs(Yorig - galaxy.systems[i].coordinates[1]) < maxOffset)
+                {
+                    integ = i;
+                    break;
+                }
+            }
+
+            if (integ != -1)
+            {
+                MessageBox.Show($"mi bombo");
+            }
+            else
+            {
+                MessageBox.Show($"airball");
+            }
+        }
+
+    }
+}
