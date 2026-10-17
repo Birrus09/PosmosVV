@@ -1,5 +1,9 @@
 using PosmosVV.Proc;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PosmosVV.GUI
 {
@@ -24,11 +28,12 @@ namespace PosmosVV.GUI
 
             if (integ != -1)
             {
-                MessageBox.Show($"mi bombo");
+                Form2 display = new Form2();
+                display.ShowDialog();
             }
             else
             {
-                MessageBox.Show($"airball");
+                MessageBox.Show($"There is no star on these coordinates");
             }
         }
 
