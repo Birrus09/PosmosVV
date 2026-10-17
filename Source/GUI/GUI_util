@@ -6,11 +6,13 @@ namespace PosmosVV.GUI
 {
     class GUI_util
     {
+        public List<float> res; 
         public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy)
         {
+            res = new List<float>();
             float Xorig = (X - centerX) / scale;
             float Yorig = (Y - centerY) / scale;
-            int integ = -1;
+            int integ = 0;
 
             float maxOffset = 50f;
 
@@ -18,13 +20,17 @@ namespace PosmosVV.GUI
             {
                 if (Math.Abs(Xorig - galaxy.systems[i].coordinates[0]) < maxOffset && Math.Abs(Yorig - galaxy.systems[i].coordinates[1]) < maxOffset)
                 {
-                    integ = i;
-                    break;
+                    integ += i;
+                    float Xdelta = Math.Abs(Xorig - galaxy.systems[i].coordinates[0]);
+                    float Ydelta = Math.Abs(Yorig - galaxy.systems[i].coordinates[1]);
+                    res.Add(Xdelta + Ydelta);
                 }
             }
-
-            if (integ != -1)
+           
+            if (integ != 0)
             {
+                float winner = res.Min();
+                //MessageBox.Show($"we chose {winner}");
                 Form2 display = new Form2();
                 display.ShowDialog();
             }
