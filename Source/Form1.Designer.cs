@@ -47,13 +47,14 @@ namespace PosmosVV
             panel1.TabIndex = 0;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
+            panel1.MouseClick += Form1_MouseClick;
             // 
             // galaxySizeTrackBar
             // 
             galaxySizeTrackBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             galaxySizeTrackBar.Location = new Point(8, 329);
-            galaxySizeTrackBar.Minimum = 5000;
             galaxySizeTrackBar.Maximum = 500000;
+            galaxySizeTrackBar.Minimum = 5000;
             galaxySizeTrackBar.Name = "galaxySizeTrackBar";
             galaxySizeTrackBar.Size = new Size(784, 45);
             galaxySizeTrackBar.TabIndex = 0;
@@ -68,7 +69,7 @@ namespace PosmosVV
             galaxySizeValueLabel.ForeColor = Color.Black;
             galaxySizeValueLabel.Location = new Point(12, 310);
             galaxySizeValueLabel.Name = "galaxySizeValueLabel";
-            galaxySizeValueLabel.Size = new Size(116, 15);
+            galaxySizeValueLabel.Size = new Size(93, 15);
             galaxySizeValueLabel.TabIndex = 1;
             galaxySizeValueLabel.Text = "Galaxy size: 8500";
             // 
@@ -91,7 +92,7 @@ namespace PosmosVV
             scatterValueLabel.ForeColor = Color.Black;
             scatterValueLabel.Location = new Point(12, 376);
             scatterValueLabel.Name = "scatterValueLabel";
-            scatterValueLabel.Size = new Size(106, 15);
+            scatterValueLabel.Size = new Size(88, 15);
             scatterValueLabel.TabIndex = 1;
             scatterValueLabel.Text = "Scatter: 0.31055";
             // 
@@ -119,9 +120,11 @@ namespace PosmosVV
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
-            ResumeLayout(false);
+            MouseClick += Form1_MouseClick;
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
