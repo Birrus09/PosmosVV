@@ -1,9 +1,12 @@
+using System.Windows.Forms;
+
 namespace PosmosVV
 {
     public partial class Form1 : Form
     {
         private PosmosVV.Proc.Galaxy ciao;
-        private PosmosVV.Proc.Galaxy tt; //ho paura di modificare ciao
+        private PosmosVV.Proc.Galaxy tt;
+        private PosmosVV.GUI.GUI_util utility;
         bool gen = false;
         public Form1()
         {
@@ -13,7 +16,6 @@ namespace PosmosVV
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -26,6 +28,8 @@ namespace PosmosVV
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
             scatterValueLabel.Visible = false;
+            panel1.Dock = DockStyle.Fill;
+            pictureBox1.Visible = false;
             panel1.Visible = true;
 
             gen = true;
@@ -63,7 +67,6 @@ namespace PosmosVV
             ciao.GenerateGalaxy2(653);
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
-            tt = ciao;
 
 
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
@@ -87,12 +90,15 @@ namespace PosmosVV
                 }
 
             }
+
+            tt = ciao;
         }
 
         //exp
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
+            PosmosVV.GUI.GUI_util utility = new GUI.GUI_util();
             if (!gen) { return; }
             int x = e.X;
             int y = e.Y;
@@ -101,7 +107,9 @@ namespace PosmosVV
             int galaxySize = galaxySizeTrackBar.Value;
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             //MessageBox.Show($"X: {x}, Y: {y}");
-            tt.Compare(x, y, centerX, centerY, scale);
+            //tt.Compare(x, y, centerX, centerY, scale);
+            utility.Compare(x, y, centerX, centerY, scale, tt);
         }
+
     }
 }
