@@ -19,6 +19,7 @@ namespace PosmosVV.Proc
 
         public void FindType()
         {
+            type = "placeholder";
 
         }
 
@@ -67,10 +68,10 @@ namespace PosmosVV.Proc
             for (int i = 0; i < RandomGen.Interval(5, 12, ref seed); i++)
             {
                 Body b = new Body();
-                b.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * i * 100; // orbit goes from +distance to -distance
+                b.distance = (Primary_bodies[i].size / 150) * i * 100; // orbit goes from +distance to -distance
                 b.coords = new int[2];
-                b.coords[0] = 0;
-                b.coords[1] = b.distance;
+                b.coords[0] = b.distance;
+                b.coords[1] = 0;
                 b.id = 1;
                 b.size = RandomGen.Interval(70, 300, ref seed);
                 if (RandomGen.Chance(0.20f, ref seed))
@@ -175,8 +176,10 @@ namespace PosmosVV.Proc
                         systems.Add(s);
                         starsize++;
                     }
-                }  
+                }
+               
             }
         }
+
     }
 }
