@@ -61,7 +61,7 @@ namespace PosmosVV
             galaxySizeValueLabel.ForeColor = Color.White;
             galaxySizeValueLabel.Location = new Point(12, 310);
             galaxySizeValueLabel.Name = "galaxySizeValueLabel";
-            galaxySizeValueLabel.Size = new Size(93, 15);
+            galaxySizeValueLabel.Size = new Size(94, 15);
             galaxySizeValueLabel.TabIndex = 1;
             galaxySizeValueLabel.Text = "Galaxy size: 8500";
             // 
@@ -117,6 +117,7 @@ namespace PosmosVV
             pictureBox1.Size = new Size(602, 111);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Form1
             // 
@@ -131,8 +132,9 @@ namespace PosmosVV
             Controls.Add(scatterTrackBar);
             Controls.Add(scatterValueLabel);
             Controls.Add(panel1);
+            MinimumSize = new Size(816, 489);
             Name = "Form1";
-            Text = "Form1";
+            Text = "POSMOS";
             Load += Form1_Load;
             MouseClick += Form1_MouseClick;
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).EndInit();
