@@ -100,7 +100,7 @@ namespace PosmosVV
         }
         public void set()
         {
-            tempT.Text = $"Temperature: {temp}";
+            tempT.Text = $"Temperature: {temp} C°";
             sizeT.Text = $"Size: {size}";
         }
     }
