@@ -111,5 +111,9 @@ namespace PosmosVV
             utility.Compare(x, y, centerX, centerY, scale, tt);
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
