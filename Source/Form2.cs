@@ -19,7 +19,7 @@ namespace PosmosVV
         {
             InitializeComponent();
             //panel1.Invalidate();
-            miBombo();
+            waitTime();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace PosmosVV
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;*/
         }
 
-        private async void miBombo()
+        private async void waitTime()
         {
             await Task.Delay(250);
             pictureBox1.Visible = false;
