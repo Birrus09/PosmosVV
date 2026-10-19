@@ -44,7 +44,7 @@ namespace PosmosVV.GUI
             }
             else
             {
-                MessageBox.Show($"There is no star on these coordinates");
+                DialogResult resul = MessageBox.Show("There's no star in these coordinates", "airball", MessageBoxButtons.OK);
             }
         }
 
