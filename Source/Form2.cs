@@ -30,7 +30,7 @@ namespace PosmosVV
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.Clear(Color.Black);
+            g.Clear(Color.DarkSlateGray);
             Rectangle rect = new Rectangle((panel1.ClientSize.Width - 200) / 2, (panel1.ClientSize.Height - 200) / 2, size / 2 + 40, size / 2 + 40);
 
             using (GraphicsPath path = new GraphicsPath())
@@ -100,8 +100,15 @@ namespace PosmosVV
         }
         public void set()
         {
+            string unit = "M";
+            int div = 100;
+            if(size < 180)
+            {
+                unit = "K";
+                div = 1;
+            }
             tempT.Text = $"Temperature: {temp} C°";
-            sizeT.Text = $"Size: {size}";
+            sizeT.Text = $"Radius: {size / div}{unit} Km";
         }
     }
 }
