@@ -39,6 +39,7 @@ namespace PosmosVV.GUI
                 Form2 display = new Form2();
                 display.temp = (int)galaxy.systems[winnerwinner].Primary_bodies[0].temperature;
                 display.size = galaxy.systems[winnerwinner].Primary_bodies[0].size;
+                display.bodies = galaxy.systems[winnerwinner].Primary_bodies.Count;
                 display.ShowDialog();
                 
             }
