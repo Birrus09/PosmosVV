@@ -11,6 +11,8 @@ namespace PosmosVV
         public Form1()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             panel1.Invalidate();
         }
 
@@ -20,9 +22,10 @@ namespace PosmosVV
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            this.MinimumSize = new Size(1920, 1080);
+            this.MaximumSize = new Size(1920, 1080);
             this.WindowState = FormWindowState.Maximized;
-            this.MinimumSize = this.Size;
-            this.MaximumSize = this.Size;
+            
             startButton.Visible = false;
             galaxySizeTrackBar.Visible = false;
             galaxySizeValueLabel.Visible = false;
