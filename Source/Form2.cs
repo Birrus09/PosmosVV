@@ -15,6 +15,7 @@ namespace PosmosVV
     {
         public int temp;
         public int size;
+        public int bodies;
         public Form2()
         {
             InitializeComponent();
@@ -30,20 +31,21 @@ namespace PosmosVV
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.Clear(Color.DarkSlateGray);
-            Rectangle rect = new Rectangle((panel1.ClientSize.Width - 200) / 2, (panel1.ClientSize.Height - 200) / 2, size / 2 + 40, size / 2 + 40);
+            g.Clear(Color.Black);
+            int rectSize = (size / 2) + 40;
+            Rectangle rect = new Rectangle((panel1.ClientSize.Width - rectSize) / 2, (panel1.ClientSize.Height - rectSize) / 2, rectSize, rectSize);
 
             using (GraphicsPath path = new GraphicsPath())
             {
-                 path.AddEllipse(rect);
+                path.AddEllipse(rect);
 
-                 using (PathGradientBrush brush = new PathGradientBrush(path))
-                 {
+                using (PathGradientBrush brush = new PathGradientBrush(path))
+                {
                     if (temp >= 12000)
                     {
                         brush.CenterColor = Color.FromArgb(255, 0, 211, 255);
                     }
-                    else if (temp >= 9500) 
+                    else if (temp >= 9500)
                     {
                         brush.CenterColor = Color.FromArgb(255, 172, 255, 243);
                     }
@@ -68,12 +70,12 @@ namespace PosmosVV
                         brush.CenterColor = Color.FromArgb(255, 255, 131, 54);
                     }
 
-                     brush.SurroundColors = new Color[]
-                     {
+                    brush.SurroundColors = new Color[]
+                    {
                         Color.FromArgb(0, 0, 150, 255)
-                     };
+                    };
 
-                     e.Graphics.FillEllipse(brush, rect);
+                    e.Graphics.FillEllipse(brush, rect);
                 }
             }
             /*Graphics g = e.Graphics;
@@ -96,19 +98,27 @@ namespace PosmosVV
             set();
             tempT.Visible = true;
             sizeT.Visible = true;
+            bodiesT.Visible = true;
             panel1.Invalidate();
         }
         public void set()
         {
             string unit = "M";
             int div = 100;
-            if(size < 180)
+            int bods = bodies - 1;
+            if (size < 180)
             {
                 unit = "K";
                 div = 1;
             }
             tempT.Text = $"Temperature: {temp} C°";
             sizeT.Text = $"Radius: {size / div}{unit} Km";
+            bodiesT.Text = $"Orbiting bodies: {bodies}";
+        }
+
+        private void tempT_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
