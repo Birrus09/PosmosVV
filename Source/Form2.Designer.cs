@@ -36,6 +36,7 @@ namespace PosmosVV
             tempT = new Label();
             sizeT = new Label();
             trademark = new Label();
+            bodiesT = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -93,6 +94,7 @@ namespace PosmosVV
             tempT.TabIndex = 4;
             tempT.Text = "Temp goes here";
             tempT.Visible = false;
+            tempT.Click += tempT_Click;
             // 
             // sizeT
             // 
@@ -100,7 +102,7 @@ namespace PosmosVV
             sizeT.BackColor = Color.Black;
             sizeT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sizeT.ForeColor = Color.Lavender;
-            sizeT.Location = new Point(436, 142);
+            sizeT.Location = new Point(436, 145);
             sizeT.Name = "sizeT";
             sizeT.Size = new Size(120, 17);
             sizeT.TabIndex = 5;
@@ -120,12 +122,26 @@ namespace PosmosVV
             trademark.Text = "TM";
             trademark.Visible = false;
             // 
+            // bodiesT
+            // 
+            bodiesT.AutoSize = true;
+            bodiesT.BackColor = Color.Black;
+            bodiesT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bodiesT.ForeColor = Color.Lavender;
+            bodiesT.Location = new Point(436, 174);
+            bodiesT.Name = "bodiesT";
+            bodiesT.Size = new Size(120, 17);
+            bodiesT.TabIndex = 7;
+            bodiesT.Text = "Bodies go here";
+            bodiesT.Visible = false;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(784, 581);
+            Controls.Add(bodiesT);
             Controls.Add(trademark);
             Controls.Add(sizeT);
             Controls.Add(tempT);
@@ -156,5 +172,6 @@ namespace PosmosVV
         private Label tempT;
         private Label sizeT;
         private Label trademark;
+        private Label bodiesT;
     }
 }
