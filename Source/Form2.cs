@@ -32,7 +32,8 @@ namespace PosmosVV
         {
             Graphics g = e.Graphics;
             g.Clear(Color.Black);
-            int rectSize = (size / 2) + 40;
+            int b = -10;
+            int rectSize = (size / 2) + b;
             Rectangle rect = new Rectangle((panel1.ClientSize.Width - rectSize) / 2, (panel1.ClientSize.Height - rectSize) / 2, rectSize, rectSize);
 
             using (GraphicsPath path = new GraphicsPath())
