@@ -158,7 +158,7 @@ namespace PosmosVV
             Name = "Form2";
             Text = "StarSpector";
             Load += Form2_Load;
-            Click += Form2_Click;
+            MouseClick += Form2_Click;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
