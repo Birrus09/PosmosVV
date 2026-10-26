@@ -8,6 +8,7 @@ namespace PosmosVV
         private PosmosVV.Proc.Galaxy tt;
         private PosmosVV.GUI.GUI_util utility;
         bool gen = false;
+        bool togglething = false;
         public Form1()
         {
             InitializeComponent();
@@ -25,12 +26,14 @@ namespace PosmosVV
             this.MinimumSize = new Size(1920, 1080);
             this.MaximumSize = new Size(1920, 1080);
             this.WindowState = FormWindowState.Maximized;
-            
+
             startButton.Visible = false;
             galaxySizeTrackBar.Visible = false;
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
             scatterValueLabel.Visible = false;
+            checkBox1.Visible = false;
+            label1.Visible = false;
             panel1.Dock = DockStyle.Fill;
             pictureBox1.Visible = false;
             panel1.Visible = true;
@@ -67,7 +70,15 @@ namespace PosmosVV
 
             int galaxySize = galaxySizeTrackBar.Value;
             //ciao.GenerateGalaxy(123, galaxySize, scatterTrackBar.Value / 100000f);
-            ciao.GenerateGalaxy2(6589);
+            if (togglething == false)
+            {
+                ciao.GenerateGalaxy(6589);
+            }
+            else
+            {
+                ciao.GenerateGalaxy2(6589);
+            }
+
             float centerX = panel1.ClientSize.Width / 2f;
             float centerY = panel1.ClientSize.Height / 2f;
 
@@ -117,6 +128,20 @@ namespace PosmosVV
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                togglething = true;
+                checkBox1.Text = "Gen 2";
+            }
+            else
+            {
+                togglething = false;
+                checkBox1.Text = "Gen 1";
+            }
         }
     }
 }
