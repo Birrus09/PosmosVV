@@ -35,6 +35,8 @@ namespace PosmosVV
             scatterValueLabel = new Label();
             startButton = new Button();
             panel1 = new Panel();
+            checkBox1 = new CheckBox();
+            label1 = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
@@ -109,6 +111,29 @@ namespace PosmosVV
             panel1.Paint += panel1_Paint;
             panel1.MouseClick += Form1_MouseClick;
             // 
+            // checkBox1
+            // 
+            checkBox1.Appearance = Appearance.Button;
+            checkBox1.Location = new Point(26, 275);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(60, 25);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "Gen 1";
+            checkBox1.TextAlign = ContentAlignment.MiddleCenter;
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 250);
+            label1.Name = "label1";
+            label1.Size = new Size(120, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Generation algorithm";
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -131,6 +156,8 @@ namespace PosmosVV
             Controls.Add(galaxySizeValueLabel);
             Controls.Add(scatterTrackBar);
             Controls.Add(scatterValueLabel);
+            Controls.Add(label1);
+            Controls.Add(checkBox1);
             Controls.Add(panel1);
             MinimumSize = new Size(816, 489);
             Name = "Form1";
@@ -152,5 +179,7 @@ namespace PosmosVV
         private Button startButton;
         private Panel panel1;
         private PictureBox pictureBox1;
+        private Label label1;
+        private CheckBox checkBox1;
     }
 }
