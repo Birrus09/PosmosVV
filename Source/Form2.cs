@@ -17,7 +17,10 @@ namespace PosmosVV
         public int size;
         public int bodies;
         public int inder;
+        public int gtrackerbar;
         private PosmosVV.Proc.Galaxy gal;
+        public List<int[]> kords;
+        int[] coords;
         public Form2()
         {
             InitializeComponent();
@@ -36,7 +39,10 @@ namespace PosmosVV
             g.Clear(Color.Black);
             int b = -35;
             int rectSize = (size / 2) + b;
+            coords = new int[2];
             Rectangle rect = new Rectangle((panel1.ClientSize.Width - rectSize) / 2, (panel1.ClientSize.Height - rectSize) / 2, rectSize, rectSize);
+
+            kords = new List<int[]>();
 
             using (GraphicsPath path = new GraphicsPath())
             {
@@ -84,26 +90,35 @@ namespace PosmosVV
             for (int i = 1; i < gal.systems[inder].Primary_bodies.Count; i++)
             {
                 var body = gal.systems[inder].Primary_bodies[i];
-                int rounded = Math.Max(1, (int)(body.size / 25f));
-
-                int distance = body.distance / 4;
-                int son = (int)(body.size / 2) + 40;
-
-                int OffX = Random.Shared.Next(-distance, distance + 1);
-                int OffY = Random.Shared.Next(-distance, distance + 1);
-
-                //non renderizzare dentro la stella
-                double linglong = Math.Sqrt((double)OffX * OffX + (double)OffY * OffY);
-
-                if (linglong > 0)
+                if (body.distance > 0)
                 {
-                    OffX += (int)(OffX / linglong * son);
-                    OffY += (int)(OffY / linglong * son);
+                    int rounded = Math.Max(1, (int)(body.size / 25f));
+
+                    int distance = body.distance / 4;
+                    int son = (int)(body.size / 2) + 40;
+
+                    int OffX = Random.Shared.Next(-distance, distance + 1);
+                    int OffY = Random.Shared.Next(-distance, distance + 1);
+
+                    //non renderizzare dentro la stella
+                    double linglong = Math.Sqrt((double)OffX * OffX + (double)OffY * OffY);
+
+                    if (linglong > 0)
+                    {
+                        OffX += (int)(OffX / linglong * son);
+                        OffY += (int)(OffY / linglong * son);
+                    }
+
+                    int X = panel1.ClientSize.Width / 2 + OffX - rounded / 2;
+                    int Y = panel1.ClientSize.Height / 2 + OffY - rounded / 2;
+                    coords[0] = X;
+                    coords[1] = Y;
+                    Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
+
+                    e.Graphics.FillEllipse(Brushes.White, rect2);
+
+                    kords.Add(coords);
                 }
-
-                Rectangle rect2 = new Rectangle(panel1.ClientSize.Width / 2 + OffX - rounded / 2, panel1.ClientSize.Height / 2 + OffY - rounded / 2, rounded, rounded);
-
-                e.Graphics.FillEllipse(Brushes.White, rect2);
             }
 
         }
@@ -159,8 +174,20 @@ namespace PosmosVV
                 fuck += $"{i} | " + galacsi.systems[inder].Primary_bodies[i].size + " | " + galacsi.systems[inder].Primary_bodies[i].distance;
                 fuck += "\n";
             }
-            
+
             MessageBox.Show($"{fuck}");
+        }
+
+        private void Form2_Click(object sender, MouseEventArgs e)
+        {
+            PosmosVV.GUI.GUI_util utility = new GUI.GUI_util();
+            int x = e.X;
+            int y = e.Y;
+            float centerX = panel1.ClientSize.Width / 2f;
+            float centerY = panel1.ClientSize.Height / 2f;
+            int galaxySize = gtrackerbar;
+            float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
+            //compare
         }
     }
 }
