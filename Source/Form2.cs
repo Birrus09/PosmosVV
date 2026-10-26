@@ -11,11 +11,13 @@ using System.Windows.Forms;
 
 namespace PosmosVV
 {
-    public partial class Form2 : Form
+    partial class Form2 : Form
     {
         public int temp;
         public int size;
         public int bodies;
+        public int inder;
+        private PosmosVV.Proc.Galaxy gal;
         public Form2()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace PosmosVV
         {
             Graphics g = e.Graphics;
             g.Clear(Color.Black);
-            int b = -10;
+            int b = -35;
             int rectSize = (size / 2) + b;
             Rectangle rect = new Rectangle((panel1.ClientSize.Width - rectSize) / 2, (panel1.ClientSize.Height - rectSize) / 2, rectSize, rectSize);
 
@@ -79,11 +81,31 @@ namespace PosmosVV
                     e.Graphics.FillEllipse(brush, rect);
                 }
             }
-            /*Graphics g = e.Graphics;
-            g.Clear(Color.DarkSalmon);
-            int d = 100;
-            g.FillEllipse(Brushes.White, 150, 150, d, d);
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;*/
+            for (int i = 1; i < gal.systems[inder].Primary_bodies.Count; i++)
+            {
+                var body = gal.systems[inder].Primary_bodies[i];
+                int rounded = Math.Max(1, (int)(body.size / 25f));
+
+                int distance = body.distance / 4;
+                int son = (int)(body.size / 2) + 40;
+
+                int OffX = Random.Shared.Next(-distance, distance + 1);
+                int OffY = Random.Shared.Next(-distance, distance + 1);
+
+                //non renderizzare dentro la stella
+                double linglong = Math.Sqrt((double)OffX * OffX + (double)OffY * OffY);
+
+                if (linglong > 0)
+                {
+                    OffX += (int)(OffX / linglong * son);
+                    OffY += (int)(OffY / linglong * son);
+                }
+
+                Rectangle rect2 = new Rectangle(panel1.ClientSize.Width / 2 + OffX - rounded / 2, panel1.ClientSize.Height / 2 + OffY - rounded / 2, rounded, rounded);
+
+                e.Graphics.FillEllipse(Brushes.White, rect2);
+            }
+
         }
 
         private async void waitTime()
@@ -114,12 +136,31 @@ namespace PosmosVV
             }
             tempT.Text = $"Temperature: {temp} C°";
             sizeT.Text = $"Radius: {size / div}{unit} Km";
-            bodiesT.Text = $"Orbiting bodies: {bodies}";
+            bodiesT.Text = $"Orbiting bodies: {bods}";
         }
 
         private void tempT_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void trademark_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void superserious_function(PosmosVV.Proc.Galaxy galacsi)
+        {
+            gal = galacsi;
+            string fuck = "number | size | distance\n";
+
+            for (int i = 1; i < galacsi.systems[inder].Primary_bodies.Count; i++)
+            {
+                fuck += $"{i} | " + galacsi.systems[inder].Primary_bodies[i].size + " | " + galacsi.systems[inder].Primary_bodies[i].distance;
+                fuck += "\n";
+            }
+            
+            MessageBox.Show($"{fuck}");
         }
     }
 }
