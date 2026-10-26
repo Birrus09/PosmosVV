@@ -8,7 +8,7 @@ namespace PosmosVV.GUI
     {
         public List<float> res;
         public List<int> inds;
-        public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy)
+        public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy, int galaxySize)
         {
             res = new List<float>();
             inds = new List<int>();
@@ -41,6 +41,7 @@ namespace PosmosVV.GUI
                 display.size = galaxy.systems[winnerwinner].Primary_bodies[0].size;
                 display.bodies = galaxy.systems[winnerwinner].Primary_bodies.Count;
                 display.inder = winnerwinner;
+                display.gtrackerbar = galaxySize;
                 display.superserious_function(galaxy);
                 display.ShowDialog();
                 
