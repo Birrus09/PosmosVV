@@ -40,6 +40,8 @@ namespace PosmosVV.GUI
                 display.temp = (int)galaxy.systems[winnerwinner].Primary_bodies[0].temperature;
                 display.size = galaxy.systems[winnerwinner].Primary_bodies[0].size;
                 display.bodies = galaxy.systems[winnerwinner].Primary_bodies.Count;
+                display.inder = winnerwinner;
+                display.superserious_function(galaxy);
                 display.ShowDialog();
                 
             }
