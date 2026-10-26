@@ -122,7 +122,7 @@ namespace PosmosVV
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             //MessageBox.Show($"X: {x}, Y: {y}");
             //tt.Compare(x, y, centerX, centerY, scale);
-            utility.Compare(x, y, centerX, centerY, scale, tt);
+            utility.Compare(x, y, centerX, centerY, scale, tt, galaxySize);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
