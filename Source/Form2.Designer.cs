@@ -49,6 +49,7 @@ namespace PosmosVV
             panel1.TabIndex = 0;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
+            panel1.MouseClick += Form2_Click;
             // 
             // starSpect
             // 
@@ -158,7 +159,6 @@ namespace PosmosVV
             Name = "Form2";
             Text = "StarSpector";
             Load += Form2_Load;
-            MouseClick += Form2_Click;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
