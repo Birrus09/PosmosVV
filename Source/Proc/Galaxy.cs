@@ -1,7 +1,16 @@
-using System.Collections.Generic;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 namespace PosmosVV.Proc
 {
+    public static class ByteUtil
+    {
+        public static byte[] RGB_Parser(string arg)
+        {
+            byte[] c = new byte[3];
+            c[0] = (byte)(arg[0] + arg[1]);
+            c[1] = (byte)(arg[2] + arg[3]);
+            c[2] = (byte)(arg[4] + arg[5]);
+            return c;
+        }
+    }
 
 
     public class Body
@@ -17,7 +26,7 @@ namespace PosmosVV.Proc
         public List<Body> Orbits;
         public int distance;
         public bool hasOrbitals = false;
-        public char[] RGB = new char[3];
+        public byte[] RGB = new byte[3];
 
         public void FindType(ref int seed)
         {
@@ -42,6 +51,7 @@ namespace PosmosVV.Proc
             if (magnetic_field / size > 0.9 && size > 400)
             {
                 type = "gas giant";
+                RGB = ByteUtil.RGB_Parser("361203");
                 return;
             }
 
@@ -50,14 +60,17 @@ namespace PosmosVV.Proc
                 if (ypol > 10.0f)
                 {
                     type = "stormworld";
+                    RGB = ByteUtil.RGB_Parser("3967A3");
                 }
                 if (ypol < -10.0f)
                 {
                     type = "molten";
+                    RGB = ByteUtil.RGB_Parser("361203");
                 }
                 else
                 {
                     type = "primworld";
+                    RGB = ByteUtil.RGB_Parser("3967A3");
                 }
             }
             if (xpol < -10.0f)
@@ -65,14 +78,17 @@ namespace PosmosVV.Proc
                 if (ypol > 10.0f)
                 {
                     type = "frozen";
+                    RGB = ByteUtil.RGB_Parser("4B636B");
                 }
                 if (ypol < -10.0f)
                 {
                     type = "barren";
+                    RGB = ByteUtil.RGB_Parser("7D4700");
                 }
                 else
                 {
                     type = "tundra";
+                    RGB = ByteUtil.RGB_Parser("4B636B");
                 }
 
             }
@@ -81,16 +97,23 @@ namespace PosmosVV.Proc
                 if (ypol > 10.0f)
                 {
                     type = "tropical";
+                    RGB = ByteUtil.RGB_Parser("247596");
                 }
                 if (ypol < -10.0f)
                 {
                     type = "arid";
+                    RGB = ByteUtil.RGB_Parser("B0AB6B");
                 }
                 else
                 {
                     type = "gaia";
+                    RGB = ByteUtil.RGB_Parser("247596");
                 }
             }
+        }
+        public int RGBINT()
+        {
+            return unchecked((int)0x8eafd432);
         }
     }
 
