@@ -17,22 +17,28 @@ namespace PosmosVV.Proc
         public List<Body> Orbits;
         public int distance;
         public bool hasOrbitals = false;
+        public char[] RGB = new char[3];
 
         public void FindType(ref int seed)
         {
             double xpol = temperature / 400.0f;
             double ypol = RandomGen.IntervalF(-50.0f, 50.0f, ref seed);
-            //             rocky
-            //  temp --------------------- >
-            //hum
-            // |  barren    arid      molten
-            // |
-            // |
-            // |   tundra   gaia      primworld
-            // |
-            // |
-            // |   frozen   tropical   stormworld
-            // V
+            /*             rocky
+              temp --------------------- >
+            hum
+             |  barren    arid      molten
+             |  #7D4700   #B0AB6B   #361203
+             |  #DB7A00   #FFCB87   #FF3B3B
+             |  
+             |   tundra   gaia      primworld
+             |   #4B636B  #247596   #3967A3
+             |   #C1D0D6  #1EB042   #409981
+             |
+             |   frozen   tropical   stormworld
+             |   #4B636B  #247596    #3967A3
+             |   #C1D0D6  #1EB042    #409981
+             V
+            */
             if (magnetic_field / size > 0.9 && size > 400)
             {
                 type = "gas giant";
