@@ -1,6 +1,7 @@
 using PosmosVV.Proc;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 
 namespace PosmosVV.GUI
 {
@@ -10,13 +11,13 @@ namespace PosmosVV.GUI
         public List<int> inds;
         public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy, int galaxySize)
         {
+            scale *= 4;
             res = new List<float>();
             inds = new List<int>();
-            float Xorig = (X - centerX) / scale;
-            float Yorig = (Y - centerY) / scale;
+            float Xorig = (float)(X - centerX) / scale;
+            float Yorig = (float)(Y - centerY) / scale;
             int integ = 0;
-
-            float maxOffset = 50f;
+            float maxOffset = 10f / scale;
 
             for (int i = 0; i < galaxy.systems.Count; i++)
             {
@@ -35,13 +36,19 @@ namespace PosmosVV.GUI
                 float winner = res.Min();
                 int winnerIndex = res.IndexOf(winner);
                 int winnerwinner = inds[winnerIndex];
+                var systemu = galaxy.systems[winnerwinner];
                 //MessageBox.Show($"we chose {winner}");
                 Form2 display = new Form2();
-                display.temp = (int)galaxy.systems[winnerwinner].Primary_bodies[0].temperature;
-                display.size = galaxy.systems[winnerwinner].Primary_bodies[0].size;
-                display.bodies = galaxy.systems[winnerwinner].Primary_bodies.Count;
+                display.temp = (int)systemu.Primary_bodies[0].temperature;
+                display.size = systemu.Primary_bodies[0].size;
+                display.bodies = systemu.Primary_bodies.Count;
                 display.inder = winnerwinner;
                 display.gtrackerbar = galaxySize;
+
+                display.coordis[0] = systemu.coordinates[0];
+                display.coordis[1] = systemu.coordinates[1];
+                display.unscaled[0] = (float)systemu.coordinates[0] / galaxySize;
+                display.unscaled[1] = (float)(systemu.coordinates[1] / galaxySize);
                 display.superserious_function(galaxy);
                 display.ShowDialog();
                 
