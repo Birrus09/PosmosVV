@@ -114,8 +114,8 @@ namespace PosmosVV
                     coords[0] = X;
                     coords[1] = Y;
                     Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
-
-                    e.Graphics.FillEllipse(Brushes.White, rect2);
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(body.RGBINT());
+                    e.Graphics.FillEllipse(brush, rect2);
 
                     kords.Add(coords);
                 }
@@ -167,15 +167,15 @@ namespace PosmosVV
         public void superserious_function(PosmosVV.Proc.Galaxy galacsi)
         {
             gal = galacsi;
-            string fuck = "number | size | distance\n";
+            string VerriDaiDeiNomiVeriAlleVariabili = "number | size | distance\n";
 
             for (int i = 1; i < galacsi.systems[inder].Primary_bodies.Count; i++)
             {
-                fuck += $"{i} | " + galacsi.systems[inder].Primary_bodies[i].size + " | " + galacsi.systems[inder].Primary_bodies[i].distance;
-                fuck += "\n";
+                VerriDaiDeiNomiVeriAlleVariabili += $"{i} | " + galacsi.systems[inder].Primary_bodies[i].size + " | " + galacsi.systems[inder].Primary_bodies[i].distance;
+                VerriDaiDeiNomiVeriAlleVariabili += "\n";
             }
 
-            MessageBox.Show($"{fuck}");
+            MessageBox.Show($"{VerriDaiDeiNomiVeriAlleVariabili}");
         }
 
         private void Form2_Click(object sender, MouseEventArgs e)
@@ -195,5 +195,3 @@ namespace PosmosVV
 // fixa la size della window principale
 // aggiungi orbite
 // ad aumentare di galaxy size aumenta il range del click
-// aggiungi slider per i par di galaxy2
-// setta l'alg iniziale a gen2 (checkbox)
