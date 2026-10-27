@@ -193,3 +193,5 @@ namespace PosmosVV
 // fixa la size della window principale
 // aggiungi orbite
 // ad aumentare di galaxy size aumenta il range del click
+// aggiungi slider per i par di galaxy2
+// setta l'alg iniziale a gen2 (checkbox)
