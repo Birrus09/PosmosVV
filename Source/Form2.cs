@@ -191,3 +191,5 @@ namespace PosmosVV
         }
     }
 }
+// aumenta il coefficeiente della distanza (x2/x3)
+// fixa la size della window principale
