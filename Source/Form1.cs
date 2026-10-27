@@ -72,11 +72,12 @@ namespace PosmosVV
             //ciao.GenerateGalaxy(123, galaxySize, scatterTrackBar.Value / 100000f);
             if (togglething == false)
             {
-                ciao.GenerateGalaxy(6589);
+                ciao.GenerateGalaxy2(6589, galaxySize);
+                galaxySize /= 4;
             }
             else
             {
-                ciao.GenerateGalaxy2(6589);
+                ciao.GenerateGalaxy(6589, galaxySize);
             }
 
             float centerX = panel1.ClientSize.Width / 2f;
@@ -135,12 +136,12 @@ namespace PosmosVV
             if (checkBox1.Checked)
             {
                 togglething = true;
-                checkBox1.Text = "Gen 2";
+                checkBox1.Text = "Gen 1";
             }
             else
             {
                 togglething = false;
-                checkBox1.Text = "Gen 1";
+                checkBox1.Text = "Gen 2";
             }
         }
     }
