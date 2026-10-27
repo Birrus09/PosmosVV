@@ -118,7 +118,7 @@ namespace PosmosVV
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(60, 25);
             checkBox1.TabIndex = 0;
-            checkBox1.Text = "Gen 1";
+            checkBox1.Text = "Gen 2";
             checkBox1.TextAlign = ContentAlignment.MiddleCenter;
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
