@@ -18,6 +18,9 @@ namespace PosmosVV
         public int bodies;
         public int inder;
         public int gtrackerbar;
+
+        public int[] coordis = new int[2];
+        public float[] unscaled = new float[2];
         private PosmosVV.Proc.Galaxy gal;
         public List<int[]> kords;
         int[] coords;
@@ -114,7 +117,7 @@ namespace PosmosVV
                     coords[0] = X;
                     coords[1] = Y;
                     Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(body.RGBINT());
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(body.RGBINT()));
                     e.Graphics.FillEllipse(brush, rect2);
 
                     kords.Add(coords);
@@ -137,6 +140,8 @@ namespace PosmosVV
             tempT.Visible = true;
             sizeT.Visible = true;
             bodiesT.Visible = true;
+            CordsT.Visible = true;
+            UnscT.Visible = true;
             panel1.Invalidate();
         }
         public void set()
@@ -152,6 +157,8 @@ namespace PosmosVV
             tempT.Text = $"Temperature: {temp} C°";
             sizeT.Text = $"Radius: {size / div}{unit} Km";
             bodiesT.Text = $"Orbiting bodies: {bods}";
+            CordsT.Text = $"Coordinates (X/Y): {coordis[0]}; {coordis[1]}";
+            UnscT.Text = $"Unscaled Coords (X/Y): {unscaled[0]}; {unscaled[1]}";
         }
 
         private void tempT_Click(object sender, EventArgs e)
@@ -167,15 +174,6 @@ namespace PosmosVV
         public void superserious_function(PosmosVV.Proc.Galaxy galacsi)
         {
             gal = galacsi;
-            string VerriDaiDeiNomiVeriAlleVariabili = "number | size | distance\n";
-
-            for (int i = 1; i < galacsi.systems[inder].Primary_bodies.Count; i++)
-            {
-                VerriDaiDeiNomiVeriAlleVariabili += $"{i} | " + galacsi.systems[inder].Primary_bodies[i].size + " | " + galacsi.systems[inder].Primary_bodies[i].distance;
-                VerriDaiDeiNomiVeriAlleVariabili += "\n";
-            }
-
-            MessageBox.Show($"{VerriDaiDeiNomiVeriAlleVariabili}");
         }
 
         private void Form2_Click(object sender, MouseEventArgs e)
