@@ -122,7 +122,6 @@ namespace PosmosVV
             int galaxySize = galaxySizeTrackBar.Value;
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             //MessageBox.Show($"X: {x}, Y: {y}");
-            //tt.Compare(x, y, centerX, centerY, scale);
             utility.Compare(x, y, centerX, centerY, scale, tt, galaxySize);
         }
 
