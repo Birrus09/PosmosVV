@@ -18,86 +18,74 @@ namespace PosmosVV.Proc
         public int distance;
         public bool hasOrbitals = false;
 
-public void FindType(ref int seed)
-{
-    double xpol = temperature / 400.0f;
-    double ypol = RandomGen.IntervalF(-50.0f, 50.0f, ref seed);
-    //             rocky
-    //  temp --------------------- >
-    //hum
-    // |  barren    arid      molten
-    // |
-    // |
-    // |   tundra   gaia      primworld
-    // |
-    // |
-    // |   frozen   tropical   stormworld
-    // V
+        public void FindType(ref int seed)
+        {
+            double xpol = temperature / 400.0f;
+            double ypol = RandomGen.IntervalF(-50.0f, 50.0f, ref seed);
+            //             rocky
+            //  temp --------------------- >
+            //hum
+            // |  barren    arid      molten
+            // |
+            // |
+            // |   tundra   gaia      primworld
+            // |
+            // |
+            // |   frozen   tropical   stormworld
+            // V
+            if (magnetic_field / size > 0.9 && size > 400)
+            {
+                type = "gas giant";
+                return;
+            }
 
-    
-    if (xpol > 10.0f)
-    {
-        if (ypol > 10.0f)
-        {
-            type = "stormworld";
-        }
-        if (ypol < -10.0f)
-        {
-            type = "molten";
-        }
-        else
-        {
-            type = "primworld";
-        }
-    }
-    if (xpol < -10.0f)
-    {
-        if (ypol > 10.0f)
-        {
-            type = "frozen";
-        }
-        if (ypol < -10.0f)
-        {
-            type = "barren";
-        }
-        else
-        {
-            type = "tundra";
-        }
+            if (xpol > 10.0f)
+            {
+                if (ypol > 10.0f)
+                {
+                    type = "stormworld";
+                }
+                if (ypol < -10.0f)
+                {
+                    type = "molten";
+                }
+                else
+                {
+                    type = "primworld";
+                }
+            }
+            if (xpol < -10.0f)
+            {
+                if (ypol > 10.0f)
+                {
+                    type = "frozen";
+                }
+                if (ypol < -10.0f)
+                {
+                    type = "barren";
+                }
+                else
+                {
+                    type = "tundra";
+                }
 
-    }
-    else
-    {
-        if (ypol > 10.0f)
-        {
-            type = "tropical";
+            }
+            else
+            {
+                if (ypol > 10.0f)
+                {
+                    type = "tropical";
+                }
+                if (ypol < -10.0f)
+                {
+                    type = "arid";
+                }
+                else
+                {
+                    type = "gaia";
+                }
+            }
         }
-        if (ypol < -10.0f)
-        {
-            type = "arid";
-        }
-        else
-        {
-            type = "gaia";
-        }
-
-    }
-
-
-    //            gasseous
-
-        //  temp --------------------- >
-        //hum
-        // |   dusty            hellstorm
-        // |
-        // |
-        // |   
-        // |
-        // |
-        // |   inferno          tornado
-        // |    
-}
-
     }
 
     public class Star : Body
@@ -143,12 +131,12 @@ public void FindType(ref int seed)
             for (int i = 0; i < RandomGen.Interval(5, 12, ref seed); i++)
             {
                 Body b = new Body();
-                b.distance = (Primary_bodies[i].size / 150) * i * 100; // orbit goes from +distance to -distance
+                b.size = RandomGen.Interval(70, 300, ref seed);
+                b.distance = (int)(((float)(Primary_bodies[i].size) / 150.0f) * (i+1) * 100); // orbit goes from +distance to -distance
                 b.coords = new int[2];
                 b.coords[0] = b.distance;
                 b.coords[1] = 0;
                 b.id = 1;
-                b.size = RandomGen.Interval(70, 300, ref seed);
                 if(i == 0)
                 {
                     b.hasOrbitals = true;
