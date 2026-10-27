@@ -37,15 +37,18 @@ namespace PosmosVV
             bodiesT = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            CordsT = new Label();
+            UnscT = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Location = new Point(250, 50);
+            panel1.Location = new Point(286, 67);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(700, 700);
+            panel1.Size = new Size(800, 933);
             panel1.TabIndex = 0;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
@@ -57,9 +60,9 @@ namespace PosmosVV
             starSpect.BackColor = Color.Black;
             starSpect.Font = new Font("Candara", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             starSpect.ForeColor = Color.MediumPurple;
-            starSpect.Location = new Point(15, 12);
+            starSpect.Location = new Point(17, 16);
             starSpect.Name = "starSpect";
-            starSpect.Size = new Size(206, 45);
+            starSpect.Size = new Size(261, 58);
             starSpect.TabIndex = 1;
             starSpect.Text = "StarSpector";
             starSpect.Visible = false;
@@ -70,9 +73,9 @@ namespace PosmosVV
             tempT.BackColor = Color.Black;
             tempT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tempT.ForeColor = Color.Lavender;
-            tempT.Location = new Point(28, 72);
+            tempT.Location = new Point(39, 164);
             tempT.Name = "tempT";
-            tempT.Size = new Size(120, 17);
+            tempT.Size = new Size(150, 22);
             tempT.TabIndex = 4;
             tempT.Text = "Temp goes here";
             tempT.Visible = false;
@@ -84,9 +87,9 @@ namespace PosmosVV
             sizeT.BackColor = Color.Black;
             sizeT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sizeT.ForeColor = Color.Lavender;
-            sizeT.Location = new Point(28, 93);
+            sizeT.Location = new Point(39, 193);
             sizeT.Name = "sizeT";
-            sizeT.Size = new Size(120, 17);
+            sizeT.Size = new Size(150, 22);
             sizeT.TabIndex = 5;
             sizeT.Text = "Size goes here";
             sizeT.Visible = false;
@@ -97,9 +100,9 @@ namespace PosmosVV
             trademark.BackColor = Color.Black;
             trademark.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             trademark.ForeColor = Color.MediumPurple;
-            trademark.Location = new Point(219, 35);
+            trademark.Location = new Point(250, 47);
             trademark.Name = "trademark";
-            trademark.Size = new Size(25, 15);
+            trademark.Size = new Size(34, 21);
             trademark.TabIndex = 6;
             trademark.Text = "TM";
             trademark.Visible = false;
@@ -111,9 +114,9 @@ namespace PosmosVV
             bodiesT.BackColor = Color.Black;
             bodiesT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bodiesT.ForeColor = Color.Lavender;
-            bodiesT.Location = new Point(28, 114);
+            bodiesT.Location = new Point(39, 222);
             bodiesT.Name = "bodiesT";
-            bodiesT.Size = new Size(120, 17);
+            bodiesT.Size = new Size(150, 22);
             bodiesT.TabIndex = 7;
             bodiesT.Text = "Bodies go here";
             bodiesT.Visible = false;
@@ -121,28 +124,58 @@ namespace PosmosVV
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(300, 549);
+            pictureBox1.Location = new Point(343, 732);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(400, 200);
+            pictureBox1.Size = new Size(457, 267);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(300, 549);
+            pictureBox2.Location = new Point(343, 732);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(400, 200);
+            pictureBox2.Size = new Size(457, 267);
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             pictureBox2.Visible = false;
             // 
+            // CordsT
+            // 
+            CordsT.AutoSize = true;
+            CordsT.BackColor = Color.Black;
+            CordsT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CordsT.ForeColor = Color.Lavender;
+            CordsT.Location = new Point(39, 85);
+            CordsT.Name = "CordsT";
+            CordsT.Size = new Size(150, 22);
+            CordsT.TabIndex = 8;
+            CordsT.Text = "Coords go here";
+            CordsT.Visible = false;
+            // 
+            // UnscT
+            // 
+            UnscT.AutoSize = true;
+            UnscT.BackColor = Color.Black;
+            UnscT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UnscT.ForeColor = Color.Lavender;
+            UnscT.Location = new Point(39, 114);
+            UnscT.Name = "UnscT";
+            UnscT.Size = new Size(170, 22);
+            UnscT.TabIndex = 9;
+            UnscT.Text = "Unscaled go here";
+            UnscT.Visible = false;
+            // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(984, 761);
+            ClientSize = new Size(1122, 1004);
+            Controls.Add(UnscT);
+            Controls.Add(CordsT);
             Controls.Add(bodiesT);
             Controls.Add(trademark);
             Controls.Add(sizeT);
@@ -152,10 +185,11 @@ namespace PosmosVV
             Controls.Add(starSpect);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
-            MaximumSize = new Size(1000, 800);
+            MaximumSize = new Size(1140, 1051);
             MinimizeBox = false;
-            MinimumSize = new Size(1000, 800);
+            MinimumSize = new Size(1140, 1018);
             Name = "Form2";
             Text = "StarSpector";
             Load += Form2_Load;
@@ -175,5 +209,7 @@ namespace PosmosVV
         private Label bodiesT;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Label CordsT;
+        private Label UnscT;
     }
 }
