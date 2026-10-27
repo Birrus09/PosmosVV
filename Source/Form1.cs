@@ -77,7 +77,7 @@ namespace PosmosVV
             }
             else
             {
-                ciao.GenerateGalaxy(6589, galaxySize);
+                ciao.GenerateGalaxy(6589, galaxySize, scatterTrackBar.Value);
             }
 
             float centerX = panel1.ClientSize.Width / 2f;
