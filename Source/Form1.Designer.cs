@@ -136,10 +136,12 @@ namespace PosmosVV
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(99, 70);
+            pictureBox1.Location = new Point(8, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(602, 111);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
