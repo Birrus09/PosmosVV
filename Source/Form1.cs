@@ -14,6 +14,7 @@ namespace PosmosVV
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
+            pictureBox1.Location = new Point((this.ClientSize.Width - pictureBox1.Width) / 2, 70);
             panel1.Invalidate();
         }
 
