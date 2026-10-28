@@ -115,6 +115,11 @@ namespace PosmosVV.Proc
         {
             return unchecked((int)0x8eafd432);
         }
+
+        public int[] RGBCOL()
+        {
+            return (255, RGB[0], RGB[1], RGB[2]);
+        }
     }
 
     public class Star : Body
