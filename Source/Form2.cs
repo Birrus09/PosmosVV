@@ -114,8 +114,7 @@ namespace PosmosVV
 
                     int X = panel1.ClientSize.Width / 2 + OffX - rounded / 2;
                     int Y = panel1.ClientSize.Height / 2 + OffY - rounded / 2;
-                    coords[0] = X;
-                    coords[1] = Y;
+                    coords = new int[] { X, Y };
                     Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
                     SolidBrush brush = new SolidBrush(Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2]));
                     e.Graphics.FillEllipse(brush, rect2);
@@ -186,6 +185,7 @@ namespace PosmosVV
             int galaxySize = gtrackerbar;
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             //compare
+            utility.Compare2(x, y, kords);
         }
     }
 }
