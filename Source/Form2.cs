@@ -1,3 +1,4 @@
+using PosmosVV.Proc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -5,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,7 @@ namespace PosmosVV
         private PosmosVV.Proc.Galaxy gal;
         public List<int[]> kords;
         int[] coords;
+        public int win;
         public Form2()
         {
             InitializeComponent();
@@ -117,6 +120,8 @@ namespace PosmosVV
                     coords = new int[] { X, Y };
                     Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
                     SolidBrush brush = new SolidBrush(Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2]));
+                    
+
                     e.Graphics.FillEllipse(brush, rect2);
 
                     kords.Add(coords);
@@ -185,7 +190,7 @@ namespace PosmosVV
             int galaxySize = gtrackerbar;
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             //compare
-            utility.Compare2(x, y, kords);
+            utility.Compare2(x, y, kords, gal, win);
         }
     }
 }
