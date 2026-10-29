@@ -123,10 +123,6 @@ namespace PosmosVV.Proc
                 }
             }
         }
-        public int RGBINT()
-        {
-            return unchecked((int)0x8eafd432);
-        }
     }
 
     public class Star : Body
