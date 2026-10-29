@@ -28,6 +28,18 @@ namespace PosmosVV.Proc
         public bool hasOrbitals = false;
         public byte[] RGB = new byte[3];
 
+        public Body()
+        {
+            size = 0;
+            temperature = 0.0f;
+            magnetic_field = 0;
+            rotation_speed = 0.0f;
+            revolution_speed = 0.0f;
+            RGB = new byte[3];
+            distance = 0;
+            hasOrbitals = false;
+        }
+
         public void FindType(ref int seed)
         {
             double xpol = temperature / 400.0f;
@@ -115,11 +127,6 @@ namespace PosmosVV.Proc
         {
             return unchecked((int)0x8eafd432);
         }
-
-        public int[] RGBCOL()
-        {
-            return (255, RGB[0], RGB[1], RGB[2]);
-        }
     }
 
     public class Star : Body
@@ -150,6 +157,12 @@ namespace PosmosVV.Proc
         public List<Body> Primary_bodies; //no orbitals, they are inherited;
         public int[] coordinates;
 
+        public System()
+        {
+            sys_id = 0;
+            Primary_bodies = new List<Body>();
+            coordinates = new int[2];
+        }
         public void GenerateSystem(ref int seed)
         {
             sys_id = 1;
@@ -227,6 +240,10 @@ namespace PosmosVV.Proc
     {
         public List<System> systems;
         int starsize = 0;
+        public Galaxy()
+        {
+            systems = new List<System>();
+        }
 
 
         public void GenerateGalaxy(int seed, int size = 15000, float deviation = 0.0855f) //0-7
