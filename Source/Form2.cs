@@ -117,7 +117,7 @@ namespace PosmosVV
                     coords[0] = X;
                     coords[1] = Y;
                     Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(body.RGBCOL()));
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2]));
                     e.Graphics.FillEllipse(brush, rect2);
 
                     kords.Add(coords);
