@@ -64,7 +64,7 @@ namespace PosmosVV
         {
             Graphics g = e.Graphics;
             g.Clear(Color.Black);
-            int b = -35;
+            int b = 15;
             int rectSize = ((size / 2) + b) * 2;
             Rectangle rect = new Rectangle((panel1.ClientSize.Width - rectSize) / 2, (panel1.ClientSize.Height - rectSize) / 2, rectSize, rectSize);
             g.FillEllipse(brushete, rect);
