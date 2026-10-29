@@ -1,4 +1,4 @@
-﻿namespace PosmosVV
+namespace PosmosVV
 {
     partial class Form3
     {
@@ -182,6 +182,10 @@
             Controls.Add(sizeT);
             Controls.Add(tempT);
             Controls.Add(planetSpect);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MaximumSize = new Size(720, 680);
+            MinimumSize = new Size(720, 680);
             Name = "Form3";
             Text = "PlanetSpector";
             ResumeLayout(false);
