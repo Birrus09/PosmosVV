@@ -83,6 +83,7 @@ namespace PosmosVV.GUI
             }
             if (integ != -1)
             {
+                int giuvide = 35;
                 float winner = res.Min();
                 int winnerIndex = res.IndexOf(winner);
                 int winnerwinner = inds[winnerIndex];
@@ -90,7 +91,7 @@ namespace PosmosVV.GUI
                 var body = galaxy.systems[e].Primary_bodies[winnerwinner + 1];
 
                 displayP.distance = body.distance;
-                displayP.size = body.size;
+                displayP.size = body.size - giuvide;
                 if(body.Orbits == null)
                 {
                     displayP.bodies = 0;
