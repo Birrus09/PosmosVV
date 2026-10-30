@@ -6,6 +6,7 @@ using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,7 @@ namespace PosmosVV
         public decimal rotation;
         public decimal revolution;
         public string type;
+
         public SolidBrush brushete = new SolidBrush(Color.White);
         public Form3()
         {
@@ -60,6 +62,7 @@ namespace PosmosVV
             TypeT.Text = $"Planet type: {type}";
         }
 
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -68,6 +71,7 @@ namespace PosmosVV
             int rectSize = ((size / 2) + b) * 2;
             Rectangle rect = new Rectangle((panel1.ClientSize.Width - rectSize) / 2, (panel1.ClientSize.Height - rectSize) / 2, rectSize, rectSize);
             g.FillEllipse(brushete, rect);
+
         }
     }
 }
