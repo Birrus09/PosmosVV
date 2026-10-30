@@ -101,7 +101,7 @@ namespace PosmosVV
                 {
                     int rounded = Math.Max(1, (int)(body.size / 25f));
 
-                    int distance = body.distance / 4;
+                    int distance = (body.distance / 4) - 25;
                     int son = (int)(body.size / 2) + 40;
 
                     int centX = panel1.ClientSize.Width / 2;
@@ -202,9 +202,4 @@ namespace PosmosVV
         }
     }
 }
-// aumenta il coefficeiente della distanza (x2/x3)
-// fixa la size della window principale
-// aggiungi orbite
-// ad aumentare di galaxy size aumenta il range del click
 // aggiungi slider per i par di galaxy2
-// setta l'alg iniziale a gen2 (checkbox)
