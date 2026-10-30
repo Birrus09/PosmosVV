@@ -14,6 +14,8 @@ namespace PosmosVV.GUI
             scale *= 4;
             res = new List<float>();
             inds = new List<int>();
+
+
             float Xorig = (float)(X - centerX) / scale;
             float Yorig = (float)(Y - centerY) / scale;
             int integ = -1;
@@ -38,6 +40,7 @@ namespace PosmosVV.GUI
                 int winnerwinner = inds[winnerIndex];
                 var systemu = galaxy.systems[winnerwinner];
                 //MessageBox.Show($"we chose {winner}");
+
                 Form2 display = new Form2();
                 display.temp = (int)systemu.Primary_bodies[0].temperature;
                 display.size = systemu.Primary_bodies[0].size;
@@ -65,6 +68,7 @@ namespace PosmosVV.GUI
             float maxOffset = 20f;
             res = new List<float>();
             inds = new List<int>();
+
             int integ = -1;
             for (int i = 0; i < planets.Count; i++)
             {
@@ -83,10 +87,18 @@ namespace PosmosVV.GUI
                 int winnerIndex = res.IndexOf(winner);
                 int winnerwinner = inds[winnerIndex];
                 Form3 displayP = new Form3();
-                var body = galaxy.systems[e].Primary_bodies[winnerwinner];
+                var body = galaxy.systems[e].Primary_bodies[winnerwinner + 1];
+
                 displayP.distance = body.distance;
                 displayP.size = body.size;
-                //displayP.bodies = body.Orbits.Count;
+                if(body.Orbits == null)
+                {
+                    displayP.bodies = 0;
+                }
+                else
+                {
+                    displayP.bodies = body.Orbits.Count;
+                }
                 displayP.temperature = (int)body.temperature;
                 displayP.revolution = (decimal)body.revolution_speed;
                 displayP.rotation = (decimal)body.rotation_speed;
