@@ -155,6 +155,7 @@ namespace PosmosVV
             int bods = bodies - 1;
             if (size < 180)
             {
+                size += 40;
                 unit = "K";
                 div = 1;
             }
