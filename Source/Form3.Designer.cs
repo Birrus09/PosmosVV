@@ -46,7 +46,7 @@ namespace PosmosVV
             RotT.BackColor = Color.Black;
             RotT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RotT.ForeColor = Color.Lavender;
-            RotT.Location = new Point(436, 207);
+            RotT.Location = new Point(575, 212);
             RotT.Name = "RotT";
             RotT.Size = new Size(160, 17);
             RotT.TabIndex = 16;
@@ -59,7 +59,7 @@ namespace PosmosVV
             DistT.BackColor = Color.Black;
             DistT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DistT.ForeColor = Color.Lavender;
-            DistT.Location = new Point(436, 72);
+            DistT.Location = new Point(575, 77);
             DistT.Name = "DistT";
             DistT.Size = new Size(120, 17);
             DistT.TabIndex = 15;
@@ -72,7 +72,7 @@ namespace PosmosVV
             bodiesT.BackColor = Color.Black;
             bodiesT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bodiesT.ForeColor = Color.Lavender;
-            bodiesT.Location = new Point(436, 167);
+            bodiesT.Location = new Point(575, 172);
             bodiesT.Name = "bodiesT";
             bodiesT.Size = new Size(120, 17);
             bodiesT.TabIndex = 14;
@@ -85,7 +85,7 @@ namespace PosmosVV
             trademark.BackColor = Color.Black;
             trademark.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             trademark.ForeColor = Color.Orange;
-            trademark.Location = new Point(654, 43);
+            trademark.Location = new Point(793, 48);
             trademark.Name = "trademark";
             trademark.Size = new Size(25, 15);
             trademark.TabIndex = 13;
@@ -98,7 +98,7 @@ namespace PosmosVV
             sizeT.BackColor = Color.Black;
             sizeT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sizeT.ForeColor = Color.Lavender;
-            sizeT.Location = new Point(436, 138);
+            sizeT.Location = new Point(575, 143);
             sizeT.Name = "sizeT";
             sizeT.Size = new Size(120, 17);
             sizeT.TabIndex = 12;
@@ -111,7 +111,7 @@ namespace PosmosVV
             tempT.BackColor = Color.Black;
             tempT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tempT.ForeColor = Color.Lavender;
-            tempT.Location = new Point(436, 101);
+            tempT.Location = new Point(575, 106);
             tempT.Name = "tempT";
             tempT.Size = new Size(120, 17);
             tempT.TabIndex = 11;
@@ -124,7 +124,7 @@ namespace PosmosVV
             planetSpect.BackColor = Color.Black;
             planetSpect.Font = new Font("Candara", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             planetSpect.ForeColor = Color.Orange;
-            planetSpect.Location = new Point(417, 20);
+            planetSpect.Location = new Point(556, 25);
             planetSpect.Name = "planetSpect";
             planetSpect.Size = new Size(241, 45);
             planetSpect.TabIndex = 10;
@@ -133,9 +133,9 @@ namespace PosmosVV
             // 
             // panel1
             // 
-            panel1.Location = new Point(12, 100);
+            panel1.Location = new Point(50, 25);
             panel1.Name = "panel1";
-            panel1.Size = new Size(400, 400);
+            panel1.Size = new Size(500, 500);
             panel1.TabIndex = 18;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
@@ -146,7 +146,7 @@ namespace PosmosVV
             RevoT.BackColor = Color.Black;
             RevoT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RevoT.ForeColor = Color.Lavender;
-            RevoT.Location = new Point(436, 236);
+            RevoT.Location = new Point(575, 241);
             RevoT.Name = "RevoT";
             RevoT.Size = new Size(168, 17);
             RevoT.TabIndex = 19;
@@ -159,7 +159,7 @@ namespace PosmosVV
             TypeT.BackColor = Color.Black;
             TypeT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TypeT.ForeColor = Color.Lavender;
-            TypeT.Location = new Point(436, 278);
+            TypeT.Location = new Point(575, 283);
             TypeT.Name = "TypeT";
             TypeT.Size = new Size(120, 17);
             TypeT.TabIndex = 20;
@@ -171,7 +171,7 @@ namespace PosmosVV
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(704, 641);
+            ClientSize = new Size(884, 561);
             Controls.Add(TypeT);
             Controls.Add(RevoT);
             Controls.Add(panel1);
@@ -184,8 +184,8 @@ namespace PosmosVV
             Controls.Add(planetSpect);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            MaximumSize = new Size(720, 680);
-            MinimumSize = new Size(720, 680);
+            MaximumSize = new Size(900, 600);
+            MinimumSize = new Size(900, 600);
             Name = "Form3";
             Text = "PlanetSpector";
             ResumeLayout(false);
