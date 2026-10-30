@@ -96,6 +96,7 @@ namespace PosmosVV
             for (int i = 1; i < gal.systems[inder].Primary_bodies.Count; i++)
             {
                 var body = gal.systems[inder].Primary_bodies[i];
+
                 if (body.distance > 0)
                 {
                     int rounded = Math.Max(1, (int)(body.size / 25f));
@@ -103,26 +104,32 @@ namespace PosmosVV
                     int distance = body.distance / 4;
                     int son = (int)(body.size / 2) + 40;
 
-                    int OffX = Random.Shared.Next(-distance, distance + 1);
-                    int OffY = Random.Shared.Next(-distance, distance + 1);
+                    int centX = panel1.ClientSize.Width / 2;
+                    int centY = panel1.ClientSize.Height / 2;
 
-                    //non renderizzare dentro la stella
-                    double linglong = Math.Sqrt((double)OffX * OffX + (double)OffY * OffY);
+                    int orbitRadius = distance + son;
 
-                    if (linglong > 0)
+                    using (Pen orbitPen = new Pen(Color.FromArgb(100, Color.Gray), 1))
                     {
-                        OffX += (int)(OffX / linglong * son);
-                        OffY += (int)(OffY / linglong * son);
+                        e.Graphics.DrawEllipse(orbitPen, centX - orbitRadius, centY - orbitRadius, orbitRadius * 2, orbitRadius * 2);
                     }
 
-                    int X = panel1.ClientSize.Width / 2 + OffX - rounded / 2;
-                    int Y = panel1.ClientSize.Height / 2 + OffY - rounded / 2;
-                    coords = new int[] { X, Y };
-                    Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2]));
-                    
+                    double angle = Random.Shared.NextDouble() * Math.PI * 2;
 
-                    e.Graphics.FillEllipse(brush, rect2);
+                    int OffX = (int)(Math.Cos(angle) * orbitRadius);
+                    int OffY = (int)(Math.Sin(angle) * orbitRadius);
+
+                    int X = centX + OffX - rounded / 2;
+                    int Y = centY + OffY - rounded / 2;
+
+                    coords = new int[] { X, Y };
+
+                    Rectangle rect2 = new Rectangle(X, Y, rounded, rounded);
+
+                    using (SolidBrush brush = new SolidBrush(Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2])))
+                    {
+                        e.Graphics.FillEllipse(brush, rect2);
+                    }
 
                     kords.Add(coords);
                 }
