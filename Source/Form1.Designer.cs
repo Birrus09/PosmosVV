@@ -42,6 +42,7 @@ namespace PosmosVV
             checkBox1 = new CheckBox();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            errorLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).BeginInit();
@@ -124,9 +125,9 @@ namespace PosmosVV
             densityValueLabel.ForeColor = Color.White;
             densityValueLabel.Location = new Point(418, 310);
             densityValueLabel.Name = "densityValueLabel";
-            densityValueLabel.Size = new Size(132, 15);
+            densityValueLabel.Size = new Size(91, 15);
             densityValueLabel.TabIndex = 3;
-            densityValueLabel.Text = "Density (Gen 2): 0,27000";
+            densityValueLabel.Text = "Density: 0,27000";
             // 
             // spreadTrackerBar
             // 
@@ -147,9 +148,9 @@ namespace PosmosVV
             spreadValueLabel.ForeColor = Color.White;
             spreadValueLabel.Location = new Point(418, 376);
             spreadValueLabel.Name = "spreadValueLabel";
-            spreadValueLabel.Size = new Size(129, 15);
+            spreadValueLabel.Size = new Size(88, 15);
             spreadValueLabel.TabIndex = 4;
-            spreadValueLabel.Text = "Spread (Gen 2): 0.24000";
+            spreadValueLabel.Text = "Spread: 0.24000";
             // 
             // densityTrackBar
             // 
@@ -198,12 +199,25 @@ namespace PosmosVV
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // errorLabel
+            // 
+            errorLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            errorLabel.AutoSize = true;
+            errorLabel.ForeColor = Color.White;
+            errorLabel.Location = new Point(525, 370);
+            errorLabel.Name = "errorLabel";
+            errorLabel.Size = new Size(84, 15);
+            errorLabel.TabIndex = 5;
+            errorLabel.Text = "Not supported";
+            errorLabel.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(800, 450);
+            Controls.Add(errorLabel);
             Controls.Add(pictureBox1);
             Controls.Add(startButton);
             Controls.Add(galaxySizeTrackBar);
@@ -245,5 +259,6 @@ namespace PosmosVV
         private TrackBar spreadTrackerBar;
         private Label spreadValueLabel;
         private TrackBar densityTrackBar;
+        private Label errorLabel;
     }
 }
