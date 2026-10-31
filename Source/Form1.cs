@@ -9,6 +9,7 @@ namespace PosmosVV
         private PosmosVV.GUI.GUI_util utility;
         bool gen = false;
         bool togglething = false;
+        int genType = 2;
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +34,10 @@ namespace PosmosVV
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
             scatterValueLabel.Visible = false;
+            spreadTrackerBar.Visible = false;
+            densityTrackBar.Visible = false;
+            spreadValueLabel.Visible = false;
+            densityValueLabel.Visible = false;
             checkBox1.Visible = false;
             label1.Visible = false;
             panel1.Dock = DockStyle.Fill;
@@ -62,6 +67,25 @@ namespace PosmosVV
                 panel1.Invalidate();
             }
         }
+        private void densityTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            float density = densityTrackBar.Value / 100000f;
+            densityValueLabel.Text = $"Density (Gen 2): {density:F5}";
+            if (panel1.Visible)
+            {
+                panel1.Invalidate();
+            }
+        }
+
+        private void spreadTrackerBar_ValueChanged(object sender, EventArgs e)
+        {
+            float spread = spreadTrackerBar.Value / 100000f;
+            spreadValueLabel.Text = $"Spread (Gen 2): {spread:F5}";
+            if (panel1.Visible)
+            {
+                panel1.Invalidate();
+            }
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -73,12 +97,14 @@ namespace PosmosVV
             //ciao.GenerateGalaxy(123, galaxySize, scatterTrackBar.Value / 100000f);
             if (togglething == false)
             {
-                ciao.GenerateGalaxy2(6589, galaxySize);
+                ciao.GenerateGalaxy2(6589, galaxySize, scatterTrackBar.Value / 100000f, spreadTrackerBar.Value / 100000f, densityTrackBar.Value / 100000f);
+                genType = 2;
                 galaxySize /= 4;
             }
             else
             {
                 ciao.GenerateGalaxy(6589, galaxySize, scatterTrackBar.Value);
+                genType = 1;
             }
 
             float centerX = panel1.ClientSize.Width / 2f;
@@ -123,7 +149,7 @@ namespace PosmosVV
             int galaxySize = galaxySizeTrackBar.Value;
             float scale = Math.Min(panel1.ClientSize.Width, panel1.ClientSize.Height) * 0.5f / galaxySize;
             //MessageBox.Show($"X: {x}, Y: {y}");
-            utility.Compare(x, y, centerX, centerY, scale, tt, galaxySize);
+            utility.Compare(x, y, centerX, centerY, scale, tt, galaxySize, genType);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
