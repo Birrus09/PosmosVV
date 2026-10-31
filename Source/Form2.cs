@@ -132,28 +132,27 @@ namespace PosmosVV
                     }
 
                     kords.Add(coords);
-                }
-
-                if (body.hasOrbitals){
-                    for (int j = 0; j < body.Orbits.Count; j++){
-                        var orbit = body.Orbits[j];
-                        int rounded = Math.Max(1, (int)(orbit.size / 25f));
-
-                        int distance = (orbit.distance / 4) - 25;
-                        int son = (int)(orbit.size / 2) + 40;
-
-                        int centX = X;
-                        int centY = Y;
-
-                        int orbitRadius = distance + son;
-
-                        using (orbitPen)
+                    if (body.hasOrbitals)
+                    {
+                        for (int j = 0; j < body.Orbits.Count; j++)
                         {
-                            e.Graphics.DrawEllipse(orbitPen, centX - orbitRadius, centY - orbitRadius, orbitRadius * 2, orbitRadius * 2);
-                        }
+                            var orbit = body.Orbits[j];
 
+                            int centrX = X;
+                            int centrY = Y;
+                            int distanceO = orbit.distance;
+                            int orbitR = distanceO;
+
+                            using (Pen orbitPen2 = new Pen(Color.FromArgb(100, Color.Gray), 1))
+                            {
+                                e.Graphics.DrawEllipse(orbitPen2, centrX - orbitR, centrY - orbitR, orbitR * 2, orbitR * 2);
+                            }
+
+                        }
                     }
                 }
+
+                
             }
 
         }
