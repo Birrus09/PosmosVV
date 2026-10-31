@@ -35,11 +35,17 @@ namespace PosmosVV
             scatterValueLabel = new Label();
             startButton = new Button();
             panel1 = new Panel();
+            densityValueLabel = new Label();
+            spreadTrackerBar = new TrackBar();
+            spreadValueLabel = new Label();
+            densityTrackBar = new TrackBar();
             checkBox1 = new CheckBox();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)densityTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +56,7 @@ namespace PosmosVV
             galaxySizeTrackBar.Maximum = 500000;
             galaxySizeTrackBar.Minimum = 5000;
             galaxySizeTrackBar.Name = "galaxySizeTrackBar";
-            galaxySizeTrackBar.Size = new Size(784, 45);
+            galaxySizeTrackBar.Size = new Size(387, 45);
             galaxySizeTrackBar.TabIndex = 0;
             galaxySizeTrackBar.TickFrequency = 25000;
             galaxySizeTrackBar.Value = 8500;
@@ -73,10 +79,10 @@ namespace PosmosVV
             scatterTrackBar.Location = new Point(8, 395);
             scatterTrackBar.Maximum = 100000;
             scatterTrackBar.Name = "scatterTrackBar";
-            scatterTrackBar.Size = new Size(784, 45);
+            scatterTrackBar.Size = new Size(387, 45);
             scatterTrackBar.TabIndex = 0;
             scatterTrackBar.TickFrequency = 10000;
-            scatterTrackBar.Value = 31055;
+            scatterTrackBar.Value = 15000;
             scatterTrackBar.ValueChanged += scatterTrackBar_ValueChanged;
             // 
             // scatterValueLabel
@@ -88,7 +94,7 @@ namespace PosmosVV
             scatterValueLabel.Name = "scatterValueLabel";
             scatterValueLabel.Size = new Size(88, 15);
             scatterValueLabel.TabIndex = 1;
-            scatterValueLabel.Text = "Scatter: 0.31055";
+            scatterValueLabel.Text = "Scatter: 0.15000";
             // 
             // startButton
             // 
@@ -110,6 +116,52 @@ namespace PosmosVV
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
             panel1.MouseClick += Form1_MouseClick;
+            // 
+            // densityValueLabel
+            // 
+            densityValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            densityValueLabel.AutoSize = true;
+            densityValueLabel.ForeColor = Color.White;
+            densityValueLabel.Location = new Point(418, 310);
+            densityValueLabel.Name = "densityValueLabel";
+            densityValueLabel.Size = new Size(132, 15);
+            densityValueLabel.TabIndex = 3;
+            densityValueLabel.Text = "Density (Gen 2): 0,27000";
+            // 
+            // spreadTrackerBar
+            // 
+            spreadTrackerBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            spreadTrackerBar.Location = new Point(405, 395);
+            spreadTrackerBar.Maximum = 100000;
+            spreadTrackerBar.Name = "spreadTrackerBar";
+            spreadTrackerBar.Size = new Size(387, 45);
+            spreadTrackerBar.TabIndex = 4;
+            spreadTrackerBar.TickFrequency = 10000;
+            spreadTrackerBar.Value = 24000;
+            spreadTrackerBar.ValueChanged += spreadTrackerBar_ValueChanged;
+            // 
+            // spreadValueLabel
+            // 
+            spreadValueLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            spreadValueLabel.AutoSize = true;
+            spreadValueLabel.ForeColor = Color.White;
+            spreadValueLabel.Location = new Point(418, 376);
+            spreadValueLabel.Name = "spreadValueLabel";
+            spreadValueLabel.Size = new Size(129, 15);
+            spreadValueLabel.TabIndex = 4;
+            spreadValueLabel.Text = "Spread (Gen 2): 0.24000";
+            // 
+            // densityTrackBar
+            // 
+            densityTrackBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            densityTrackBar.Location = new Point(405, 329);
+            densityTrackBar.Maximum = 100000;
+            densityTrackBar.Name = "densityTrackBar";
+            densityTrackBar.Size = new Size(387, 45);
+            densityTrackBar.TabIndex = 3;
+            densityTrackBar.TickFrequency = 10000;
+            densityTrackBar.Value = 27000;
+            densityTrackBar.ValueChanged += densityTrackBar_ValueChanged;
             // 
             // checkBox1
             // 
@@ -160,6 +212,10 @@ namespace PosmosVV
             Controls.Add(scatterValueLabel);
             Controls.Add(label1);
             Controls.Add(checkBox1);
+            Controls.Add(densityValueLabel);
+            Controls.Add(spreadTrackerBar);
+            Controls.Add(spreadValueLabel);
+            Controls.Add(densityTrackBar);
             Controls.Add(panel1);
             MinimumSize = new Size(816, 489);
             Name = "Form1";
@@ -168,6 +224,8 @@ namespace PosmosVV
             MouseClick += Form1_MouseClick;
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)densityTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -183,5 +241,9 @@ namespace PosmosVV
         private PictureBox pictureBox1;
         private Label label1;
         private CheckBox checkBox1;
+        private Label densityValueLabel;
+        private TrackBar spreadTrackerBar;
+        private Label spreadValueLabel;
+        private TrackBar densityTrackBar;
     }
 }
