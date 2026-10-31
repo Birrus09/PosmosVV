@@ -73,7 +73,7 @@ namespace PosmosVV.Proc
                     type = "stormworld";
                     RGB = ByteUtil.RGB_Parser("3967A3");
                 }
-                if (ypol < -10.0f)
+                else if (ypol < -10.0f)
                 {
                     type = "molten";
                     RGB = ByteUtil.RGB_Parser("361203");
@@ -82,16 +82,21 @@ namespace PosmosVV.Proc
                 {
                     type = "primworld";
                     RGB = ByteUtil.RGB_Parser("3967A3");
+                    if (temperature > 400.0f)
+                    {
+                        type = "molten";
+                        RGB = ByteUtil.RGB_Parser("361203");
+                    }
                 }
             }
-            if (temperature < -150.0f)
+            else if (temperature < 0.0f)
             {
                 if (ypol > 10.0f)
                 {
                     type = "frozen";
                     RGB = ByteUtil.RGB_Parser("4B636B");
                 }
-                if (ypol < -10.0f)
+                else if (ypol < -10.0f)
                 {
                     type = "barren";
                     RGB = ByteUtil.RGB_Parser("7D4700");
@@ -110,7 +115,7 @@ namespace PosmosVV.Proc
                     type = "tropical";
                     RGB = ByteUtil.RGB_Parser("247596");
                 }
-                if (ypol < -10.0f)
+                else if (ypol < -10.0f)
                 {
                     type = "arid";
                     RGB = ByteUtil.RGB_Parser("B0AB6B");
@@ -186,7 +191,7 @@ namespace PosmosVV.Proc
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
                         Body o = new Body();
-                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 20;
+                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 40;
                         o.size = RandomGen.Interval(20, 120, ref seed);
                         o.coords = new int[2];
                         o.coords[0] = 0;
@@ -211,10 +216,10 @@ namespace PosmosVV.Proc
                 b.rotation_speed = RandomGen.IntervalF(0.1f, 1.0f, ref seed);
 
 
-                b.temperature = RandomGen.IntervalF(-200.0f, 200.0f, ref seed);
-                b.temperature = (b.temperature) + (star.out_temp * bodiesss / (i+1) - 600.0f) * 1.2f;
+                b.temperature = RandomGen.IntervalF(-600.0f, 100.0f, ref seed);
+                b.temperature = (b.temperature) + (star.out_temp * bodiesss / (i+1) - 800.0f) * 1.2f;
 
-
+                
                 b.FindType(ref seed);
 
 
