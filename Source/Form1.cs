@@ -70,7 +70,7 @@ namespace PosmosVV
         private void densityTrackBar_ValueChanged(object sender, EventArgs e)
         {
             float density = densityTrackBar.Value / 100000f;
-            densityValueLabel.Text = $"Density (Gen 2): {density:F5}";
+            densityValueLabel.Text = $"Density: {density:F5}";
             if (panel1.Visible)
             {
                 panel1.Invalidate();
@@ -80,7 +80,7 @@ namespace PosmosVV
         private void spreadTrackerBar_ValueChanged(object sender, EventArgs e)
         {
             float spread = spreadTrackerBar.Value / 100000f;
-            spreadValueLabel.Text = $"Spread (Gen 2): {spread:F5}";
+            spreadValueLabel.Text = $"Spread: {spread:F5}";
             if (panel1.Visible)
             {
                 panel1.Invalidate();
@@ -163,11 +163,21 @@ namespace PosmosVV
             {
                 togglething = true;
                 checkBox1.Text = "Gen 1";
+                densityTrackBar.Visible = false;
+                spreadTrackerBar.Visible = false;
+                densityValueLabel.Visible = false;
+                spreadValueLabel.Visible = false;
+                errorLabel.Visible = true;
             }
             else
             {
                 togglething = false;
                 checkBox1.Text = "Gen 2";
+                densityTrackBar.Visible = true;
+                spreadTrackerBar.Visible = true;
+                densityValueLabel.Visible = true;
+                spreadValueLabel.Visible = true;
+                errorLabel.Visible = false;
             }
         }
     }
