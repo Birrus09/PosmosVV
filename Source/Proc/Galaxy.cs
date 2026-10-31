@@ -207,7 +207,7 @@ namespace PosmosVV.Proc
                             o.type = "orbital";
                         }
                         o.temperature = RandomGen.IntervalF(-20.0f, 20.0f, ref seed);
-                        o.temperature = (b.temperature) * 0.6f + (star.out_temp - 2000.0f) * 1.4f * (bodiesss / b.distance);
+                        o.temperature = (b.temperature) * 0.2f + (star.out_temp - 2000.0f) * 1.4f ;
                         b.Orbits.Add(o);
                     }
                 }
@@ -217,7 +217,7 @@ namespace PosmosVV.Proc
 
 
                 b.temperature = RandomGen.IntervalF(-600.0f, 100.0f, ref seed);
-                b.temperature = (b.temperature) + (star.out_temp * bodiesss / (i+1) - 800.0f) * 1.2f;
+                b.temperature = b.temperature * 0.2f + (star.out_temp * bodiesss / (i+1) - 1500.0f) * 1.2f;
 
                 
                 b.FindType(ref seed);
