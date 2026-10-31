@@ -42,7 +42,6 @@ namespace PosmosVV.Proc
 
         public void FindType(ref int seed)
         {
-            double xpol = temperature / 400.0f;
             double ypol = RandomGen.IntervalF(-50.0f, 50.0f, ref seed);
             /*             rocky
               temp --------------------- >
@@ -67,7 +66,7 @@ namespace PosmosVV.Proc
                 return;
             }
 
-            if (xpol > 10.0f)
+            if (temperature > 150.0f)
             {
                 if (ypol > 10.0f)
                 {
@@ -85,7 +84,7 @@ namespace PosmosVV.Proc
                     RGB = ByteUtil.RGB_Parser("3967A3");
                 }
             }
-            if (xpol < -10.0f)
+            if (temperature < -150.0f)
             {
                 if (ypol > 10.0f)
                 {
@@ -170,12 +169,12 @@ namespace PosmosVV.Proc
             //add smal chance for binary star system
             //TODO
 
-
-            for (int i = 0; i < RandomGen.Interval(5, 12, ref seed); i++)
+            int bodiesss = RandomGen.Interval(5, 12, ref seed);
+            for (int i = 0; i < bodiesss; i++)
             {
                 Body b = new Body();
-                b.size = RandomGen.Interval(70, 300, ref seed);
-                b.distance = (int)(((float)(Primary_bodies[i].size) / 150.0f) * (i+1) * 100); // orbit goes from +distance to -distance
+                b.size = RandomGen.Interval(80, 450, ref seed);
+                b.distance = (int)(((float)(Primary_bodies[i].size) / 400.0f) * (i+1) * 100); // orbit goes from +distance to -distance
                 b.coords = new int[2];
                 b.coords[0] = b.distance;
                 b.coords[1] = 0;
@@ -203,20 +202,21 @@ namespace PosmosVV.Proc
                             o.type = "orbital";
                         }
                         o.temperature = RandomGen.IntervalF(-20.0f, 20.0f, ref seed);
-                        o.temperature = (b.temperature) * 0.3f + (star.out_temp - 5000.0f) * 0.4f;
+                        o.temperature = (b.temperature) * 0.6f + (star.out_temp - 2000.0f) * 1.4f * (bodiesss / b.distance);
                         b.Orbits.Add(o);
                     }
                 }
-                b.magnetic_field = (int)RandomGen.IntervalF(0.6f, 1.2f, ref seed) * b.size;
+                b.magnetic_field = (int)RandomGen.IntervalF(0.6f, 1.2f, ref seed) * b.size / 2;
                 b.revolution_speed = RandomGen.IntervalF(10.0f, 100.0f, ref seed);
                 b.rotation_speed = RandomGen.IntervalF(0.1f, 1.0f, ref seed);
 
 
                 b.temperature = RandomGen.IntervalF(-200.0f, 200.0f, ref seed);
-                b.temperature = (b.temperature) * 0.4f + (star.out_temp - 5000.0f) * 0.6f;
+                b.temperature = (b.temperature) + (star.out_temp * bodiesss / (i+1) - 600.0f) * 1.2f;
 
 
                 b.FindType(ref seed);
+
 
                 Primary_bodies.Add(b);
             }
