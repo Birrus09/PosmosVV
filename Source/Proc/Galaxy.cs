@@ -191,7 +191,7 @@ namespace PosmosVV.Proc
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
                         Body o = new Body();
-                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 40;
+                        o.distance = (int)(RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 40);
                         o.size = RandomGen.Interval(20, 120, ref seed);
                         o.coords = new int[2];
                         o.coords[0] = 0;
@@ -207,7 +207,7 @@ namespace PosmosVV.Proc
                             o.type = "orbital";
                         }
                         o.temperature = RandomGen.IntervalF(-20.0f, 20.0f, ref seed);
-                        o.temperature = (b.temperature) * 0.2f + (star.out_temp - 2000.0f) * 1.4f ;
+                        o.temperature = (b.temperature) * 0.2f + (star.out_temp - 2000.0f) * 1.4f;
                         b.Orbits.Add(o);
                     }
                 }
