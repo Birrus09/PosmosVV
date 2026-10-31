@@ -43,6 +43,7 @@ namespace PosmosVV
             panel1.Dock = DockStyle.Fill;
             pictureBox1.Visible = false;
             panel1.Visible = true;
+            errorLabel.Visible = false;
 
             gen = true;
 
