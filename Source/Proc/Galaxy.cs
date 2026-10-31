@@ -1,5 +1,3 @@
-using System.Diagnostics.Metrics;
-
 namespace PosmosVV.Proc
 {
     public static class ByteUtil
@@ -126,7 +124,6 @@ namespace PosmosVV.Proc
                 {
                     type = "gaia";
                     RGB = ByteUtil.RGB_Parser("247596");
-                    
                 }
             }
         }
@@ -166,9 +163,8 @@ namespace PosmosVV.Proc
             Primary_bodies = new List<Body>();
             coordinates = new int[2];
         }
-        public int GenerateSystem(ref int seed)
+        public void GenerateSystem(ref int seed)
         {
-            int Countrer = 0;
             sys_id = 1;
             Primary_bodies = new List<Body>();
             Star star = new Star();
@@ -225,19 +221,13 @@ namespace PosmosVV.Proc
 
                 
                 b.FindType(ref seed);
-                if (b.type == "gaia")
-                {
-                    Countrer++;
-                }
 
 
                 Primary_bodies.Add(b);
             }
 
-            return Countrer;
+
         }
-
-
 
     }
 
@@ -247,7 +237,6 @@ namespace PosmosVV.Proc
     {
         public List<System> systems;
         int starsize = 0;
-        int Countrer = 0;
         public Galaxy()
         {
             systems = new List<System>();
@@ -284,7 +273,7 @@ namespace PosmosVV.Proc
             }
         }
 
-        public int GenerateGalaxy2(int seed, int size = 30000, float Spiral = 0.15f, float spread = 0.24f, float density = 0.27f)
+        public void GenerateGalaxy2(int seed, int size = 30000, float Spiral = 0.15f, float spread = 0.24f, float density = 0.27f)
         {
             systems = new List<System>();
             for (int i = 0; i < size; i++)
@@ -293,7 +282,7 @@ namespace PosmosVV.Proc
                 {
                     float angle = i * Spiral + RandomGen.IntervalF(-spread, spread, ref seed);
                     System s = new System();
-                    Countrer += s.GenerateSystem(ref seed);
+                    s.GenerateSystem(ref seed);
                     int central_radius = size / 40;
                     s.coordinates = new int[2];
                     s.coordinates[0] = (int)(i * Math.Cos(angle))/2;
@@ -306,7 +295,6 @@ namespace PosmosVV.Proc
                 }
                
             }
-            return Countrer;
         }
 
     }
