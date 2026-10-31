@@ -169,17 +169,17 @@ namespace PosmosVV.Proc
             //add smal chance for binary star system
             //TODO
 
-            int bodiesss = RandomGen.Interval(5, 12, ref seed);
+            int bodiesss = RandomGen.Interval(5, 9, ref seed);
             for (int i = 0; i < bodiesss; i++)
             {
                 Body b = new Body();
                 b.size = RandomGen.Interval(80, 450, ref seed);
-                b.distance = (int)(((float)(Primary_bodies[i].size) / 400.0f) * (i+1) * 100); // orbit goes from +distance to -distance
+                b.distance = (int)(( 400.0f / (float)(Primary_bodies[i].size) + i+1) * 100); // orbit goes from +distance to -distance
                 b.coords = new int[2];
                 b.coords[0] = b.distance;
                 b.coords[1] = 0;
                 b.id = 1;
-                if (RandomGen.Chance(0.20f, ref seed))
+                if (RandomGen.Chance(Utility.maximum(0.0f, b.size / 450.0f - 0.2f), ref seed))
                 {
                     b.hasOrbitals = true;
                     b.Orbits = new List<Body>();
