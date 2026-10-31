@@ -142,10 +142,11 @@ namespace PosmosVV
                             int centrY = Y;
                             int distanceO = orbit.distance;
                             int orbitR = distanceO;
+                            int diam = orbitR * 2 - 45;
 
                             using (Pen orbitPen2 = new Pen(Color.FromArgb(100, Color.Gray), 1))
                             {
-                                e.Graphics.DrawEllipse(orbitPen2, centrX - orbitR, centrY - orbitR, orbitR * 2, orbitR * 2);
+                                e.Graphics.DrawEllipse(orbitPen2, centrX - diam / 2 + 6, centrY - diam / 2 + 6, diam, diam);
                             }
 
                         }
