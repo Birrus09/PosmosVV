@@ -9,9 +9,13 @@ namespace PosmosVV.GUI
     {
         public List<float> res;
         public List<int> inds;
-        public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy, int galaxySize)
+        public void Compare(float X, float Y, float centerX, float centerY, float scale, PosmosVV.Proc.Galaxy galaxy, int galaxySize, int genType)
         {
-            scale *= 4;
+            if (genType == 2)
+            {
+                scale *= 4;
+            }
+            
             res = new List<float>();
             inds = new List<int>();
 
