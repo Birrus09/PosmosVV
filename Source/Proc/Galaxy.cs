@@ -180,10 +180,6 @@ namespace PosmosVV.Proc
                 b.coords[0] = b.distance;
                 b.coords[1] = 0;
                 b.id = 1;
-                if(i == 0)
-                {
-                    b.hasOrbitals = true;
-                }
                 if (RandomGen.Chance(0.20f, ref seed))
                 {
                     b.hasOrbitals = true;
@@ -191,7 +187,7 @@ namespace PosmosVV.Proc
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
                         Body o = new Body();
-                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 50;
+                        o.distance = (int)RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 20;
                         o.size = RandomGen.Interval(20, 120, ref seed);
                         o.coords = new int[2];
                         o.coords[0] = 0;
