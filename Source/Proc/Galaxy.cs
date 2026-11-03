@@ -141,7 +141,7 @@ namespace PosmosVV.Proc
             coords[0] = 0;
             coords[1] = 0;
             size = RandomGen.Interval(100, 500, ref seed);
-            temperature = RandomGen.IntervalF(3000.0f, 10000.0f, ref seed) * size * 2 / 500;
+            temperature = RandomGen.IntervalF(3000.0f, 6000.0f, ref seed) * size * 2 / 500;
             out_temp = (int)temperature / 10;
             radiation = RandomGen.Interval(100, 10000, ref seed) * out_temp * size / 500;
         }
@@ -215,9 +215,7 @@ namespace PosmosVV.Proc
                 b.revolution_speed = RandomGen.IntervalF(10.0f, 100.0f, ref seed);
                 b.rotation_speed = RandomGen.IntervalF(0.1f, 1.0f, ref seed);
 
-
-                b.temperature = RandomGen.IntervalF(-600.0f, 100.0f, ref seed);
-                b.temperature = b.temperature * 0.2f + (star.out_temp * bodiesss / (i+1) - 1500.0f) * 1.2f;
+                b.temperature = (star.temperature * (bodiesss - i)/(bodiesss)) * 0.3f -800.0f;
 
                 
                 b.FindType(ref seed);
