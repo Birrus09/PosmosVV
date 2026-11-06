@@ -16,6 +16,25 @@ namespace PosmosVV.Proc
     }
 
 
+    public class hex{
+        public int[] coords;
+    }
+    public class Domain{
+        public hex[] HEXMAP;
+
+        public Domain(){
+
+        }
+        public void DOMINIT(int size){
+            for (int i = 0; i < size; i++)
+            {
+                HEXMAP[i] = new hex();
+                HEXMAP[i].coords = new int[2];
+            }
+        }
+    }
+
+
     public class Body
     {
         public int id;
@@ -30,6 +49,7 @@ namespace PosmosVV.Proc
         public int distance;
         public bool hasOrbitals = false;
         public byte[] RGB = new byte[3];
+        public Domain DOM = null;
 
         public Body()
         {
