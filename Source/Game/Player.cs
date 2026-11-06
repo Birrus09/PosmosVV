@@ -32,6 +32,18 @@ class Government{
     public string type;
     public string ethic;
     public List<string> values;
+
+    public Government()
+    {
+        name = "";
+        GovSlots = new List<string>();
+        GovSlotsName = new List<string>();
+        PolSlot = new List<string>();
+        officials = new List<Governor>();
+        type = "";
+        ethic = "";
+        values = new List<string>();
+    }
 };
 
 class Species{
