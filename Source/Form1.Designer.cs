@@ -43,6 +43,7 @@ namespace PosmosVV
             label1 = new Label();
             pictureBox1 = new PictureBox();
             errorLabel = new Label();
+            gameButton = new Button();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).BeginInit();
@@ -211,6 +212,17 @@ namespace PosmosVV
             errorLabel.Text = "Not supported";
             errorLabel.Visible = false;
             // 
+            // gameButton
+            // 
+            gameButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            gameButton.Location = new Point(660, 12);
+            gameButton.Name = "gameButton";
+            gameButton.Size = new Size(125, 32);
+            gameButton.TabIndex = 6;
+            gameButton.Text = "Apri Hexmap";
+            gameButton.UseVisualStyleBackColor = true;
+            gameButton.Click += gameButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -218,6 +230,7 @@ namespace PosmosVV
             BackColor = Color.Black;
             ClientSize = new Size(800, 450);
             Controls.Add(errorLabel);
+            Controls.Add(gameButton);
             Controls.Add(pictureBox1);
             Controls.Add(startButton);
             Controls.Add(galaxySizeTrackBar);
@@ -260,5 +273,6 @@ namespace PosmosVV
         private Label spreadValueLabel;
         private TrackBar densityTrackBar;
         private Label errorLabel;
+        private Button gameButton;
     }
 }

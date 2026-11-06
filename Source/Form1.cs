@@ -19,6 +19,11 @@ namespace PosmosVV
             panel1.Invalidate();
         }
 
+        private void gameButton_Click(object sender, EventArgs e)
+        {
+            new PosmosVV.Game.Form1().Show(this);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -30,6 +35,7 @@ namespace PosmosVV
             this.WindowState = FormWindowState.Maximized;
 
             startButton.Visible = false;
+            gameButton.Visible = false;
             galaxySizeTrackBar.Visible = false;
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
