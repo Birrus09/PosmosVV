@@ -20,24 +20,31 @@ namespace PosmosVV.Proc
         public int[] coords;
         public string type;
 
-        public hex()
+        public hex(int[] coords)
         {
-            coords = new int[2];
+            this.coords = coords;
             type = "";
         }
     }
     public class Domain{
-        public List<hex> HEXMAP;
+        public List<List<hex>> HEXMAP;
 
         public Domain(){
-            HEXMAP = new List<hex>();
+            HEXMAP = new List<List<hex>>();
         }
-        public void DOMINIT(int size){
-            for (int i = 0; i < size; i++)
+        public void DOMINIT(int side){
+            List<List<hex>> L = new List<List<hex>>();
+            for (int i = 0; i < side + 2; i += 2)
             {
-                HEXMAP[i] = new hex();
-                HEXMAP[i].coords = new int[2];
+                List<hex> L2 = new List<hex>();
+                for (int j = 1 +(i%2); j < side * 2; j += 2)
+                {
+                    hex H = new hex([i, j]);
+                    L2.Add(H);
+                }
+                L.Add(L2);
             }
+            HEXMAP = L;
         }
     }
 
@@ -240,7 +247,7 @@ namespace PosmosVV.Proc
                     for (int j = 0; j < RandomGen.Interval(1, 4, ref seed); j++)
                     {
                         Body o = new Body();
-                        o.distance = (int)(RandomGen.IntervalF(0.83f, 1.24f, ref seed) * j * 40);
+                        o.distance = (int)(RandomGen.IntervalF(0.83f, 1.24f, ref seed) * (j + 1) * 40);
                         o.size = RandomGen.Interval(20, 120, ref seed);
                         o.coords = new int[2];
                         o.coords[0] = 0;
