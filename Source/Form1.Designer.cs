@@ -44,11 +44,14 @@ namespace PosmosVV
             pictureBox1 = new PictureBox();
             errorLabel = new Label();
             gameButton = new Button();
+            seedLabel = new Label();
+            seedNumericUpDown = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)densityTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)seedNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // galaxySizeTrackBar
@@ -223,6 +226,26 @@ namespace PosmosVV
             gameButton.UseVisualStyleBackColor = true;
             gameButton.Click += gameButton_Click;
             // 
+            // seedLabel
+            // 
+            seedLabel.AutoSize = true;
+            seedLabel.ForeColor = Color.White;
+            seedLabel.Location = new Point(660, 54);
+            seedLabel.Name = "seedLabel";
+            seedLabel.Size = new Size(31, 15);
+            seedLabel.TabIndex = 7;
+            seedLabel.Text = "Seed";
+            // 
+            // seedNumericUpDown
+            // 
+            seedNumericUpDown.Location = new Point(660, 72);
+            seedNumericUpDown.Maximum = 2147483647;
+            seedNumericUpDown.Minimum = -2147483648;
+            seedNumericUpDown.Name = "seedNumericUpDown";
+            seedNumericUpDown.Size = new Size(125, 23);
+            seedNumericUpDown.TabIndex = 8;
+            seedNumericUpDown.Value = 6589;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -231,6 +254,8 @@ namespace PosmosVV
             ClientSize = new Size(800, 450);
             Controls.Add(errorLabel);
             Controls.Add(gameButton);
+            Controls.Add(seedLabel);
+            Controls.Add(seedNumericUpDown);
             Controls.Add(pictureBox1);
             Controls.Add(startButton);
             Controls.Add(galaxySizeTrackBar);
@@ -254,6 +279,7 @@ namespace PosmosVV
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)densityTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)seedNumericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -274,5 +300,7 @@ namespace PosmosVV
         private TrackBar densityTrackBar;
         private Label errorLabel;
         private Button gameButton;
+        private Label seedLabel;
+        private NumericUpDown seedNumericUpDown;
     }
 }

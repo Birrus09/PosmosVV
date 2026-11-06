@@ -36,6 +36,8 @@ namespace PosmosVV
 
             startButton.Visible = false;
             gameButton.Visible = false;
+            seedLabel.Visible = false;
+            seedNumericUpDown.Visible = false;
             galaxySizeTrackBar.Visible = false;
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
@@ -104,13 +106,13 @@ namespace PosmosVV
             //ciao.GenerateGalaxy(123, galaxySize, scatterTrackBar.Value / 100000f);
             if (togglething == false)
             {
-                ciao.GenerateGalaxy2(6589, galaxySize, scatterTrackBar.Value / 100000f, spreadTrackerBar.Value / 100000f, densityTrackBar.Value / 100000f);
+                ciao.GenerateGalaxy2((int)seedNumericUpDown.Value, galaxySize, scatterTrackBar.Value / 100000f, spreadTrackerBar.Value / 100000f, densityTrackBar.Value / 100000f);
                 genType = 2;
                 galaxySize /= 4;
             }
             else
             {
-                ciao.GenerateGalaxy(6589, galaxySize, scatterTrackBar.Value);
+                ciao.GenerateGalaxy((int)seedNumericUpDown.Value, galaxySize, scatterTrackBar.Value);
                 genType = 1;
             }
 
