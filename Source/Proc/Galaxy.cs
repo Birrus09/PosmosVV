@@ -53,7 +53,7 @@ namespace PosmosVV.Proc
              |  #7D4700   #B0AB6B   #361203
              |  #DB7A00   #FFCB87   #FF3B3B
              |  
-             |   tundra   gaia      primworld
+             |   tundra   gaia      panthalassa
              |   #4B636B  #247596   #3967A3
              |   #C1D0D6  #1EB042   #409981
              |
@@ -78,17 +78,27 @@ namespace PosmosVV.Proc
                 }
                 else if (ypol < -10.0f)
                 {
-                    type = "molten";
-                    RGB = ByteUtil.RGB_Parser("361203");
-                }
-                else
-                {
-                    type = "primworld";
-                    RGB = ByteUtil.RGB_Parser("3967A3");
-                    if (temperature > 400.0f)
+                    type = "vitrified";
+                    RGB = ByteUtil.RGB_Parser("807C63");
+                    if (temperature > 350f)
                     {
                         type = "molten";
                         RGB = ByteUtil.RGB_Parser("361203");
+                    }
+                }
+                else
+                {
+                    type = "oceanic";
+                    RGB = ByteUtil.RGB_Parser("3967A3");
+                    if (temperature > 100f)
+                    {
+                        type = "panthalassa";
+                        RGB = ByteUtil.RGB_Parser("243C5C");
+                    }
+                    else if (temperature > 400.0f)
+                    {
+                        type = "volcanic";
+                        RGB = ByteUtil.RGB_Parser("732805");
                     }
                 }
             }
@@ -108,6 +118,11 @@ namespace PosmosVV.Proc
                 {
                     type = "tundra";
                     RGB = ByteUtil.RGB_Parser("4B636B");
+                    if (temperature < -90f)
+                    {
+                        type = "glacial";
+                        RGB = ByteUtil.RGB_Parser("657C8A");
+                    }
                 }
 
             }
@@ -218,7 +233,7 @@ namespace PosmosVV.Proc
                 b.revolution_speed = RandomGen.IntervalF(10.0f, 100.0f, ref seed);
                 b.rotation_speed = RandomGen.IntervalF(0.1f, 1.0f, ref seed);
 
-                b.temperature = (star.temperature * (bodiesss - i)/(bodiesss)) * 0.3f - 800.0f;
+                b.temperature = ((star.temperature * (bodiesss - i)/(bodiesss)) * 0.3f - 800.0f) / 2f;
 
                 
                 b.FindType(ref seed);
