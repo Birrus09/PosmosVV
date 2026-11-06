@@ -56,7 +56,9 @@ namespace PosmosVV.Proc
         public int distance;
         public bool hasOrbitals = false;
         public byte[] RGB = new byte[3];
+        public byte[] RGBsec = new byte[3];
         public Domain DOM = null;
+        public int ParentGalaxyId;
 
         public Body()
         {
@@ -66,6 +68,7 @@ namespace PosmosVV.Proc
             rotation_speed = 0.0f;
             revolution_speed = 0.0f;
             RGB = new byte[3];
+            RGBsec = new byte[3];
             distance = 0;
             hasOrbitals = false;
         }
@@ -208,7 +211,7 @@ namespace PosmosVV.Proc
             Primary_bodies = new List<Body>();
             coordinates = new int[2];
         }
-        public void GenerateSystem(ref int seed)
+        public void GenerateSystem(ref int seed,int ID)
         {
             sys_id = 1;
             Primary_bodies = new List<Body>();
@@ -229,6 +232,7 @@ namespace PosmosVV.Proc
                 b.coords[0] = b.distance;
                 b.coords[1] = 0;
                 b.id = 1;
+                b.ParentGalaxyId = ID;
                 if (RandomGen.Chance(Utility.maximum(0.0f, b.size / 450.0f - 0.2f), ref seed))
                 {
                     b.hasOrbitals = true;
@@ -298,10 +302,11 @@ namespace PosmosVV.Proc
                     if (i > central_radius)
                     {
                         System s = new System();
+                        s.sys_id = i;
                         s.coordinates = new int[2];
                         s.coordinates[0] = (int)(i * Math.Cos((double)i / RandomGen.IntervalF(1.0f - 0.0001f * deviation, 1.0f + 0.0001f * deviation, ref seed)));
                         s.coordinates[1] = (int)(i * Math.Sin((double)i / RandomGen.IntervalF(1.0f - 0.0001f * deviation, 1.0f + 0.0001f * deviation, ref seed)));
-                        s.GenerateSystem(ref seed);
+                        s.GenerateSystem(ref seed, s.sys_id);
                         if (Math.Sqrt(s.coordinates[0] * s.coordinates[0] + s.coordinates[1] * s.coordinates[1]) > central_radius)
                         {
                             systems.Add(s);
@@ -325,7 +330,7 @@ namespace PosmosVV.Proc
                 {
                     float angle = i * Spiral + RandomGen.IntervalF(-spread, spread, ref seed);
                     System s = new System();
-                    s.GenerateSystem(ref seed);
+                    s.GenerateSystem(ref seed, s.sys_id);
                     int central_radius = size / 40;
                     s.coordinates = new int[2];
                     s.coordinates[0] = (int)(i * Math.Cos(angle))/2;
