@@ -23,7 +23,7 @@ namespace PosmosVV
         public decimal revolution;
         public string type;
 
-        public SolidBrush brushete = new SolidBrush(Color.White);
+        public HatchBrush brushete = new HatchBrush(HatchStyle.ForwardDiagonal, Color.White, Color.Black);
         public Form3()
         {
             InitializeComponent();
