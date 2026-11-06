@@ -9,7 +9,7 @@ class Governor{
     public int xp = 0;
     public int xptresh;
 
-    public Government(string name, string position, int lvl, float growthrate, int xp, int xptresh)
+    public Governor(string name, string position, int lvl, float growthrate, int xp, int xptresh)
     {
         this.name = name;
         this.position = position;
@@ -42,24 +42,24 @@ class Species{
     public List<string> Traits;
     public string preferred_planet;
 
-    Species(string name, string Comp, bool Etherotrophic, string Class, List<string> Traits, string preferred_planet){
-        this->name = name;
-        this->Comp = Comp;
-        this->Etherotrophic = Etherotrophic;
-        this->Class = Class;
-        this->Traits = Traits;
-        this->preferred_planet = preferred_planet;
+    public Species(string name, string Comp, bool Etherotrophic, string Class, List<string> Traits, string preferred_planet){
+        this.name = name;
+        this.Comp = Comp;
+        this.Etherotrophic = Etherotrophic;
+        this.Class = Class;
+        this.Traits = Traits;
+        this.preferred_planet = preferred_planet;
     }
 };
 
 class Player
 {
-    public Government Gov = new Government("Default", "Default", 1, 1.0f, 0, 100);
+    public Government Gov = new Government();
     public Species Founding_Species = new Species("ixlian", "carbon", true, "Arthropod", ["egg-laying", "exoskeleton"], "gaia");
 
-    public List<PosmosVV.proc.systems> Domains = new List<PosmosVV.proc.systems>();
+    public List<PosmosVV.Proc.System> Domains = new List<PosmosVV.Proc.System>();
 
-    public void FindStarter(ref PosmosVV.proc.Galaxy galaxy)
+    public void FindStarter(ref PosmosVV.Proc.Galaxy galaxy)
         {
             for (int i = 0; i < galaxy.systems.Count; i++)
             {
@@ -68,7 +68,7 @@ class Player
                     if (galaxy.systems[i].Primary_bodies[j].type == Founding_Species.preferred_planet)
                     {
                         Domains.Add(galaxy.systems[i]);
-                        galaxy.systems[i].Primary_bodies[j].DOM = new Domain();
+                        galaxy.systems[i].Primary_bodies[j].DOM = new PosmosVV.Proc.Domain();
                         galaxy.systems[i].Primary_bodies[j].DOM.DOMINIT(20);
                     };
                 }
