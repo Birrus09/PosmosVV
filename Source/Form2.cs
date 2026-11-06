@@ -136,19 +136,35 @@ namespace PosmosVV
                     {
                         for (int j = 0; j < body.Orbits.Count; j++)
                         {
-                            var orbit = body.Orbits[j];
-
-                            int centrX = X;
-                            int centrY = Y;
-                            int distanceO = orbit.distance;
-                            int orbitR = distanceO;
-                            int diam = orbitR * 2 - 45;
-
-                            using (Pen orbitPen2 = new Pen(Color.FromArgb(100, Color.Gray), 1))
+                            if (body.Orbits[j].distance != 0)
                             {
-                                e.Graphics.DrawEllipse(orbitPen2, centrX - diam / 2 + 6, centrY - diam / 2 + 6, diam, diam);
-                            }
+                                var orbit = body.Orbits[j];
 
+                                int centrX = X + rounded / 2;
+                                int centrY = Y + rounded / 2;
+
+                                int orbitR = orbit.distance;
+
+                                using (Pen orbitPen2 = new Pen(Color.FromArgb(100, Color.Gray), 1))
+                                {
+                                    e.Graphics.DrawEllipse(orbitPen2, centrX - orbitR, centrY - orbitR, orbitR * 2, orbitR * 2);
+                                }
+
+                                double angleO = Random.Shared.NextDouble() * Math.PI * 2;
+
+                                int OffXO = (int)(Math.Cos(angleO) * orbitR);
+                                int OffYO = (int)(Math.Sin(angleO) * orbitR);
+
+                                int moonX = centrX + OffXO;
+                                int moonY = centrY + OffYO;
+
+                                Rectangle rect3 = new Rectangle(moonX - 2, moonY - 2, 4, 4);
+
+                                using (SolidBrush brush = new SolidBrush(Color.White))
+                                {
+                                    e.Graphics.FillEllipse(brush, rect3);
+                                }
+                            }
                         }
                     }
                 }
