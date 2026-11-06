@@ -18,12 +18,19 @@ namespace PosmosVV.Proc
 
     public class hex{
         public int[] coords;
+        public string type;
+
+        public hex()
+        {
+            coords = new int[2];
+            type = "";
+        }
     }
     public class Domain{
-        public hex[] HEXMAP;
+        public List<hex> HEXMAP;
 
         public Domain(){
-
+            HEXMAP = new List<hex>();
         }
         public void DOMINIT(int size){
             for (int i = 0; i < size; i++)
