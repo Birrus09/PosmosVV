@@ -47,6 +47,8 @@ namespace PosmosVV
             label1.Visible = false;
             panel1.Dock = DockStyle.Fill;
             pictureBox1.Visible = false;
+            seedLabel.Visible = false;
+            seedNumericUpDown.Visible = false;
             panel1.Visible = true;
             errorLabel.Visible = false;
 
