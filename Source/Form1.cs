@@ -35,8 +35,6 @@ namespace PosmosVV
             this.WindowState = FormWindowState.Maximized;
 
             startButton.Visible = false;
-            seedLabel.Visible = false;
-            seedNumericUpDown.Visible = false;
             galaxySizeTrackBar.Visible = false;
             galaxySizeValueLabel.Visible = false;
             scatterTrackBar.Visible = false;
