@@ -35,6 +35,8 @@ namespace PosmosVV
             scatterValueLabel = new Label();
             startButton = new Button();
             panel1 = new Panel();
+            seedNumericUpDown = new NumericUpDown();
+            seedLabel = new Label();
             densityValueLabel = new Label();
             spreadTrackerBar = new TrackBar();
             spreadValueLabel = new Label();
@@ -43,15 +45,13 @@ namespace PosmosVV
             label1 = new Label();
             pictureBox1 = new PictureBox();
             errorLabel = new Label();
-            seedLabel = new Label();
-            seedNumericUpDown = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)seedNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)densityTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)seedNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // galaxySizeTrackBar
@@ -127,6 +127,27 @@ namespace PosmosVV
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
             panel1.MouseClick += Form1_MouseClick;
+            // 
+            // seedNumericUpDown
+            // 
+            seedNumericUpDown.Location = new Point(697, 34);
+            seedNumericUpDown.Margin = new Padding(3, 4, 3, 4);
+            seedNumericUpDown.Maximum = new decimal(new int[] { int.MaxValue, 0, 0, 0 });
+            seedNumericUpDown.Minimum = new decimal(new int[] { int.MinValue, 0, 0, int.MinValue });
+            seedNumericUpDown.Name = "seedNumericUpDown";
+            seedNumericUpDown.Size = new Size(143, 27);
+            seedNumericUpDown.TabIndex = 8;
+            seedNumericUpDown.Value = new decimal(new int[] { 6589, 0, 0, 0 });
+            // 
+            // seedLabel
+            // 
+            seedLabel.AutoSize = true;
+            seedLabel.ForeColor = Color.White;
+            seedLabel.Location = new Point(697, 10);
+            seedLabel.Name = "seedLabel";
+            seedLabel.Size = new Size(42, 20);
+            seedLabel.TabIndex = 7;
+            seedLabel.Text = "Seed";
             // 
             // densityValueLabel
             // 
@@ -225,35 +246,12 @@ namespace PosmosVV
             errorLabel.Text = "Not supported";
             errorLabel.Visible = false;
             // 
-            // seedLabel
-            // 
-            seedLabel.AutoSize = true;
-            seedLabel.ForeColor = Color.White;
-            seedLabel.Location = new Point(695, 0);
-            seedLabel.Name = "seedLabel";
-            seedLabel.Size = new Size(42, 20);
-            seedLabel.TabIndex = 7;
-            seedLabel.Text = "Seed";
-            // 
-            // seedNumericUpDown
-            // 
-            seedNumericUpDown.Location = new Point(695, 34);
-            seedNumericUpDown.Margin = new Padding(3, 4, 3, 4);
-            seedNumericUpDown.Maximum = new decimal(new int[] { int.MaxValue, 0, 0, 0 });
-            seedNumericUpDown.Minimum = new decimal(new int[] { int.MinValue, 0, 0, int.MinValue });
-            seedNumericUpDown.Name = "seedNumericUpDown";
-            seedNumericUpDown.Size = new Size(143, 27);
-            seedNumericUpDown.TabIndex = 8;
-            seedNumericUpDown.Value = new decimal(new int[] { 6589, 0, 0, 0 });
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(914, 600);
-            Controls.Add(errorLabel);
-            Controls.Add(pictureBox1);
             Controls.Add(startButton);
             Controls.Add(galaxySizeTrackBar);
             Controls.Add(galaxySizeValueLabel);
@@ -265,6 +263,8 @@ namespace PosmosVV
             Controls.Add(spreadTrackerBar);
             Controls.Add(spreadValueLabel);
             Controls.Add(densityTrackBar);
+            Controls.Add(errorLabel);
+            Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(930, 636);
@@ -276,10 +276,10 @@ namespace PosmosVV
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)seedNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)densityTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)seedNumericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
