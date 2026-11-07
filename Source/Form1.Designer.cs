@@ -47,6 +47,7 @@ namespace PosmosVV
             seedNumericUpDown = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).BeginInit();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)densityTrackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -116,6 +117,8 @@ namespace PosmosVV
             // panel1
             // 
             panel1.BackColor = Color.Black;
+            panel1.Controls.Add(seedNumericUpDown);
+            panel1.Controls.Add(seedLabel);
             panel1.Location = new Point(-2, 263);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
@@ -226,7 +229,7 @@ namespace PosmosVV
             // 
             seedLabel.AutoSize = true;
             seedLabel.ForeColor = Color.White;
-            seedLabel.Location = new Point(754, 72);
+            seedLabel.Location = new Point(695, 0);
             seedLabel.Name = "seedLabel";
             seedLabel.Size = new Size(42, 20);
             seedLabel.TabIndex = 7;
@@ -234,7 +237,7 @@ namespace PosmosVV
             // 
             // seedNumericUpDown
             // 
-            seedNumericUpDown.Location = new Point(754, 96);
+            seedNumericUpDown.Location = new Point(695, 34);
             seedNumericUpDown.Margin = new Padding(3, 4, 3, 4);
             seedNumericUpDown.Maximum = new decimal(new int[] { int.MaxValue, 0, 0, 0 });
             seedNumericUpDown.Minimum = new decimal(new int[] { int.MinValue, 0, 0, int.MinValue });
@@ -250,8 +253,6 @@ namespace PosmosVV
             BackColor = Color.Black;
             ClientSize = new Size(914, 600);
             Controls.Add(errorLabel);
-            Controls.Add(seedLabel);
-            Controls.Add(seedNumericUpDown);
             Controls.Add(pictureBox1);
             Controls.Add(startButton);
             Controls.Add(galaxySizeTrackBar);
@@ -273,6 +274,8 @@ namespace PosmosVV
             MouseClick += Form1_MouseClick;
             ((System.ComponentModel.ISupportInitialize)galaxySizeTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)scatterTrackBar).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)spreadTrackerBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)densityTrackBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
