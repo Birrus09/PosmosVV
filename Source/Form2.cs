@@ -143,7 +143,7 @@ namespace PosmosVV
                                 int centrX = X + rounded / 2;
                                 int centrY = Y + rounded / 2;
 
-                                int orbitR = orbit.distance;
+                                int orbitR = orbit.distance / 4;
 
                                 using (Pen orbitPen2 = new Pen(Color.FromArgb(100, Color.Gray), 1))
                                 {
