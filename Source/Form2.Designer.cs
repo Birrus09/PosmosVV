@@ -45,9 +45,9 @@ namespace PosmosVV
             // 
             // panel1
             // 
-            panel1.Location = new Point(325, 25);
+            panel1.Location = new Point(200, -50);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 800);
+            panel1.Size = new Size(1000, 1000);
             panel1.TabIndex = 0;
             panel1.Visible = false;
             panel1.Paint += panel1_Paint;
