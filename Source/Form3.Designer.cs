@@ -46,7 +46,7 @@ namespace PosmosVV
             RotT.BackColor = Color.Black;
             RotT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RotT.ForeColor = Color.Lavender;
-            RotT.Location = new Point(919, 212);
+            RotT.Location = new Point(891, 215);
             RotT.Name = "RotT";
             RotT.Size = new Size(160, 17);
             RotT.TabIndex = 16;
@@ -59,7 +59,7 @@ namespace PosmosVV
             DistT.BackColor = Color.Black;
             DistT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DistT.ForeColor = Color.Lavender;
-            DistT.Location = new Point(919, 77);
+            DistT.Location = new Point(891, 80);
             DistT.Name = "DistT";
             DistT.Size = new Size(120, 17);
             DistT.TabIndex = 15;
@@ -72,7 +72,7 @@ namespace PosmosVV
             bodiesT.BackColor = Color.Black;
             bodiesT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             bodiesT.ForeColor = Color.Lavender;
-            bodiesT.Location = new Point(919, 172);
+            bodiesT.Location = new Point(891, 175);
             bodiesT.Name = "bodiesT";
             bodiesT.Size = new Size(120, 17);
             bodiesT.TabIndex = 14;
@@ -85,7 +85,7 @@ namespace PosmosVV
             trademark.BackColor = Color.Black;
             trademark.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             trademark.ForeColor = Color.Orange;
-            trademark.Location = new Point(1137, 48);
+            trademark.Location = new Point(1109, 51);
             trademark.Name = "trademark";
             trademark.Size = new Size(25, 15);
             trademark.TabIndex = 13;
@@ -98,7 +98,7 @@ namespace PosmosVV
             sizeT.BackColor = Color.Black;
             sizeT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sizeT.ForeColor = Color.Lavender;
-            sizeT.Location = new Point(919, 143);
+            sizeT.Location = new Point(891, 146);
             sizeT.Name = "sizeT";
             sizeT.Size = new Size(120, 17);
             sizeT.TabIndex = 12;
@@ -111,7 +111,7 @@ namespace PosmosVV
             tempT.BackColor = Color.Black;
             tempT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tempT.ForeColor = Color.Lavender;
-            tempT.Location = new Point(919, 106);
+            tempT.Location = new Point(891, 109);
             tempT.Name = "tempT";
             tempT.Size = new Size(120, 17);
             tempT.TabIndex = 11;
@@ -124,7 +124,7 @@ namespace PosmosVV
             planetSpect.BackColor = Color.Black;
             planetSpect.Font = new Font("Candara", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             planetSpect.ForeColor = Color.Orange;
-            planetSpect.Location = new Point(900, 25);
+            planetSpect.Location = new Point(872, 28);
             planetSpect.Name = "planetSpect";
             planetSpect.Size = new Size(241, 45);
             planetSpect.TabIndex = 10;
@@ -146,7 +146,7 @@ namespace PosmosVV
             RevoT.BackColor = Color.Black;
             RevoT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RevoT.ForeColor = Color.Lavender;
-            RevoT.Location = new Point(919, 241);
+            RevoT.Location = new Point(891, 244);
             RevoT.Name = "RevoT";
             RevoT.Size = new Size(168, 17);
             RevoT.TabIndex = 19;
@@ -159,7 +159,7 @@ namespace PosmosVV
             TypeT.BackColor = Color.Black;
             TypeT.Font = new Font("Cascadia Mono", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TypeT.ForeColor = Color.Lavender;
-            TypeT.Location = new Point(919, 283);
+            TypeT.Location = new Point(891, 286);
             TypeT.Name = "TypeT";
             TypeT.Size = new Size(120, 17);
             TypeT.TabIndex = 20;
