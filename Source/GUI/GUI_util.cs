@@ -108,6 +108,9 @@ namespace PosmosVV.GUI
                 displayP.revolution = (decimal)body.revolution_speed;
                 displayP.rotation = (decimal)body.rotation_speed;
                 displayP.type = body.type;
+                displayP.superserious_function(galaxy);
+                displayP.win = winnerwinner + 1;
+                displayP.ei = e;
                 displayP.brushete = new HatchBrush(HatchStyle.Plaid, Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2]), Color.FromArgb(255, (int)body.RGB[0], (int)body.RGB[1], (int)body.RGB[2]));
                 displayP.ShowDialog();
             }
